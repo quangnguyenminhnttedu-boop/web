@@ -39,22 +39,27 @@
             display: flex; flex-direction: column; padding: 20px 0; z-index: 50; box-shadow: var(--shadow-md);
         }
         
-        /* LOGO CHUẨN XANH NGUYÊN KHỐI */
-        .brand { 
+        /* LOGO HOLOGRAM UPGRADE */
+        .brand, .brand-text-glow { 
             font-size: 2.2rem; 
             font-weight: 900; 
             letter-spacing: -0.5px; 
             display: inline-flex; 
             align-items: center; 
             justify-content: center;
-            color: var(--primary);
-            padding: 0 24px 20px; 
-            border-bottom: 1px solid var(--border-color); 
+            /* Hiệu ứng Hologram */
+            background: linear-gradient(90deg, #00f0ff, #ff007f, #7000ff, #00f0ff);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: hologram 4s linear infinite;
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
-        
-        /* Class màu chữ logo ở phần body */
-        .brand-text {
-            color: var(--primary);
+        .brand { padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); }
+
+        @keyframes hologram {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
         .menu-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 5px; padding: 0 12px; flex: 1;}
@@ -199,7 +204,9 @@
 </head>
 <body>
 
+    <!-- SIDEBAR -->
     <nav class="sidebar">
+        <!-- LOGO HOLOGRAM ĐÃ KHÔI PHỤC -->
         <div class="brand">
             OurPath
         </div>
@@ -216,6 +223,7 @@
     </nav>
 
     <div class="main-content">
+        <!-- HEADER -->
         <header>
             <div class="header-controls">
                 <div class="discipline-switcher" id="hdr-discipline" style="display: none;">
@@ -230,6 +238,7 @@
             <div class="header-controls">
                 <button class="sound-toggle" id="btn-sound" onclick="toggleSound()">🔊 Âm thanh: BẬT</button>
                 
+                <!-- KPI Trigger Zone -->
                 <div class="user-profile-zone" onmouseenter="uiHover()" onclick="openKPIModal()">
                     <div class="stat-badge">⭐ <span id="hdr-xp">0</span> XP</div>
                     <div class="stat-badge" style="color: var(--success); border-color: #a7f3d0; background: #ecfdf5;">🎓 <span id="hdr-credit">0</span> TÍN</div>
@@ -238,9 +247,11 @@
             </div>
         </header>
 
+        <!-- 1. AUTH & LANDING VIEW -->
         <div id="auth-view" class="view-section active">
             <div style="text-align: center; max-width: 850px; margin: 0 auto 40px;">
-                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span class="brand-text">OurPath</span></h1>
+                <!-- DÒNG CHỮ CHÍNH ĐỒNG BỘ MÀU HOLOGRAM VỚI SIDEBAR -->
+                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span class="brand-text-glow">OurPath</span></h1>
                 <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng EdTech ứng dụng AI giúp người học kiến tạo, trực quan hóa và quản lý lộ trình học thuật cá nhân hóa theo mục tiêu học tập và nghề nghiệp.</p>
             </div>
 
@@ -265,6 +276,7 @@
             </div>
         </div>
 
+        <!-- 2. MODERN ROADMAP VIEW -->
         <div id="roadmap-view" class="view-section">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
                 <div>
@@ -281,6 +293,7 @@
             </div>
         </div>
 
+        <!-- 3. CARTOON CITY MMO VIEW -->
         <div id="world-view" class="view-section">
             <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus</h2>
             <div class="world-layout">
@@ -303,6 +316,7 @@
             </div>
         </div>
 
+        <!-- 4. FORUM VIEW -->
         <div id="forum-view" class="view-section">
             <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
                 <h2 style="font-size: 2rem;">The Hub</h2>
@@ -339,6 +353,7 @@
             </details>
         </div>
 
+        <!-- 5. TOURNAMENT VIEW -->
         <div id="tour-view" class="view-section">
             <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh</h2>
             <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh lành mạnh dựa trên số Tín chỉ tích lũy được.</p>
@@ -366,6 +381,7 @@
         </div>
     </div>
 
+    <!-- MODAL 1: ROADMAP DETAILS -->
     <div class="modal-overlay" id="nodeModal">
         <div class="node-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeNodeModal()">✕</div>
@@ -382,7 +398,7 @@
                         <div class="details-content" id="modal-syllabus">Nội dung...</div>
                     </details>
                     
-                    <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học từ Bên thứ ba (Đề xuất)</h4>
+                    <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học đề xuất</h4>
                     <div id="modal-courses"></div>
                 </div>
 
@@ -401,6 +417,7 @@
         </div>
     </div>
 
+    <!-- MODAL 2: KPI / RADAR DASHBOARD -->
     <div class="modal-overlay" id="kpiModal">
         <div class="kpi-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeKPIModal()">✕</div>
@@ -426,6 +443,7 @@
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <!-- Radar Chart -->
                 <div class="card">
                     <h3 style="text-align: center; color: var(--primary); margin-bottom: 10px;">Phổ Kỹ Năng Đa Chiều</h3>
                     <div class="radar-container">
@@ -472,6 +490,7 @@
         </div>
     </div>
 
+    <!-- CHATBOT WIDGET -->
     <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </div>
@@ -583,6 +602,7 @@
             document.getElementById('tour-my-name').innerText = user.name;
             document.getElementById('hdr-name').style.color = "var(--primary)";
             
+            // Toggle Menus
             document.getElementById('menu-road').style.display = "flex";
             document.getElementById('menu-world').style.display = "flex";
             document.getElementById('menu-forum').style.display = "flex";
@@ -730,7 +750,7 @@
                     courseContainer.innerHTML += `<a href="${c.l}" class="course-link" target="_blank">🔗 ${c.n}</a>`;
                 });
             } else {
-                courseContainer.innerHTML = `<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Chưa có khóa học từ Bên thứ ba đề xuất cho học phần này.</p>`;
+                courseContainer.innerHTML = `<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Chưa có khóa học ngoại vi đề xuất cho học phần này.</p>`;
             }
 
             const btn = document.getElementById('modal-complete-btn');

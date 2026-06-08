@@ -39,15 +39,10 @@
             display: flex; flex-direction: column; padding: 20px 0; z-index: 50; box-shadow: var(--shadow-md);
         }
         
-        /* LOGO UPGRADE (STARTUP VIBE) */
+        /* LOGO UPGRADE */
         .brand { 
-            font-size: 1.8rem; font-weight: 900; padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); 
-            color: var(--text-main); letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
-        }
-        .brand svg { filter: drop-shadow(0 3px 5px rgba(249, 115, 22, 0.3)); }
-        .brand span { 
-            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            font-size: 2.2rem; font-weight: 900; padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); 
+            color: var(--primary); letter-spacing: -0.5px; display: flex; align-items: center; justify-content: center;
         }
 
         .menu-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 5px; padding: 0 12px; flex: 1;}
@@ -194,26 +189,16 @@
 
     <!-- SIDEBAR -->
     <nav class="sidebar">
-        <!-- STARTUP LOGO UPGRADE -->
+        <!-- LÊN ĐỜI LOGO -->
         <div class="brand">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <defs>
-                    <linearGradient id="logo-grad" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#2563eb" />
-                        <stop offset="100%" stop-color="#f97316" />
-                    </linearGradient>
-                </defs>
-                <path d="M3 21l6-6 4 4 8-12"></path>
-                <path d="M21 7V3h-4"></path>
-            </svg>
-            Our<span>Path</span>
+            OurPath
         </div>
 
         <ul class="menu-list">
             <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Khởi tạo Hồ sơ</li>
             <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Đào tạo</li>
             <li class="menu-item" style="display: none;" id="menu-world" onmouseenter="uiHover()" onclick="navTo('world-view', this)">🏙️ OurPath City</li>
-            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 Thảo luận Cộng đồng</li>
+            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 The Hub</li>
             <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-view', this)">🏆 Giải đấu Vinh danh</li>
             
             <li class="menu-item logout-btn" style="display: none;" id="menu-logout" onmouseenter="uiHover()" onclick="handleLogout()">🚪 Đăng xuất</li>
@@ -269,7 +254,6 @@
                     </select>
                 </div>
 
-                <!-- Bỏ dòng "Miễn phí" -->
                 <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Bắt đầu Học ngay</button>
             </div>
         </div>
@@ -279,7 +263,7 @@
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
                 <div>
                     <h2 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Lộ trình Đào tạo Thực chiến</h2>
-                    <p style="color: var(--text-muted); font-size: 1rem;">Mở khóa từng chặng kiến thức. Click vào thẻ học phần để xem Video bài giảng và Tải tài liệu.</p>
+                    <p style="color: var(--text-muted); font-size: 1rem;">Mở khóa từng chặng kiến thức bằng cách click vào thẻ học phần để xem tài liệu và video bài giảng.</p>
                 </div>
                 <div style="background: white; padding: 10px 20px; border-radius: 30px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); font-weight: 700;">
                     Tiến độ: <span id="rm-percent-text" style="color: var(--primary);">0%</span>
@@ -299,7 +283,7 @@
                     <canvas id="cityCanvas"></canvas>
                     <div class="city-hud">
                         <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; font-weight: 800;">Khuôn viên Thực tế ảo</div>
-                        <div style="color: var(--text-muted); font-size: 0.9rem;">Học viên đang online: <strong style="color: var(--success)">1,402</strong></div>
+                        <div style="color: var(--text-muted); font-size: 0.9rem;">Học viên đang online: <strong style="color: var(--success)">1</strong></div>
                     </div>
                 </div>
                 
@@ -722,6 +706,7 @@
             });
         }
 
+        // --- MODAL 1: ROADMAP DETAILS ---
         function openNodeModal(node, isCompleted) {
             activeNodeId = node.id;
             document.getElementById('modal-title').innerText = node.title;
@@ -755,7 +740,7 @@
         }
         function closeNodeModal() { document.getElementById('nodeModal').classList.remove('show'); }
 
-        // --- KPI DASHBOARD MODAL ---
+        // --- MODAL 2: KPI DASHBOARD ---
         function openKPIModal() { 
             if(user.name === "Khách") return; 
             uiClick(); document.getElementById('kpiModal').classList.add('show'); 

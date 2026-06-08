@@ -40,16 +40,13 @@
         }
         
         /* LOGO HOLOGRAM UPGRADE */
-        .brand { 
+        .brand, .brand-text-glow { 
             font-size: 2.2rem; 
             font-weight: 900; 
-            padding: 0 24px 20px; 
-            border-bottom: 1px solid var(--border-color); 
             letter-spacing: -0.5px; 
-            display: flex; 
+            display: inline-flex; 
             align-items: center; 
             justify-content: center;
-            /* Hiệu ứng Hologram */
             background: linear-gradient(90deg, #00f0ff, #ff007f, #7000ff, #00f0ff);
             background-size: 300% 300%;
             -webkit-background-clip: text;
@@ -57,6 +54,7 @@
             animation: hologram 4s linear infinite;
             text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
+        .brand { padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); }
 
         @keyframes hologram {
             0% { background-position: 0% 50%; }
@@ -205,7 +203,9 @@
 </head>
 <body>
 
+    <!-- SIDEBAR -->
     <nav class="sidebar">
+        <!-- FIXED LOGO TO HOLOGRAM -->
         <div class="brand">
             OurPath
         </div>
@@ -214,7 +214,8 @@
             <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Khởi tạo Hồ sơ</li>
             <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Đào tạo</li>
             <li class="menu-item" style="display: none;" id="menu-world" onmouseenter="uiHover()" onclick="navTo('world-view', this)">🏙️ OurPath City</li>
-            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 Thảo luận Cộng đồng</li>
+            <!-- CHANGED TO THE HUB FIXED -->
+            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 The Hub</li>
             <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-view', this)">🏆 Giải đấu Vinh danh</li>
             
             <li class="menu-item logout-btn" style="display: none;" id="menu-logout" onmouseenter="uiHover()" onclick="handleLogout()">🚪 Đăng xuất</li>
@@ -222,6 +223,7 @@
     </nav>
 
     <div class="main-content">
+        <!-- HEADER -->
         <header>
             <div class="header-controls">
                 <div class="discipline-switcher" id="hdr-discipline" style="display: none;">
@@ -236,6 +238,7 @@
             <div class="header-controls">
                 <button class="sound-toggle" id="btn-sound" onclick="toggleSound()">🔊 Âm thanh: BẬT</button>
                 
+                <!-- KPI Trigger Zone -->
                 <div class="user-profile-zone" onmouseenter="uiHover()" onclick="openKPIModal()">
                     <div class="stat-badge">⭐ <span id="hdr-xp">0</span> XP</div>
                     <div class="stat-badge" style="color: var(--success); border-color: #a7f3d0; background: #ecfdf5;">🎓 <span id="hdr-credit">0</span> TÍN</div>
@@ -244,9 +247,11 @@
             </div>
         </header>
 
+        <!-- 1. AUTH & LANDING VIEW -->
         <div id="auth-view" class="view-section active">
             <div style="text-align: center; max-width: 850px; margin: 0 auto 40px;">
-                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
+                <!-- DÒNG CHỮ CHÍNH ĐỒNG BỘ MÀU HOLOGRAM VỚI SIDEBAR -->
+                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span class="brand-text-glow">OurPath</span></h1>
                 <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng EdTech ứng dụng AI giúp người học kiến tạo, trực quan hóa và quản lý lộ trình học thuật cá nhân hóa theo mục tiêu học tập và nghề nghiệp.</p>
             </div>
 
@@ -271,6 +276,7 @@
             </div>
         </div>
 
+        <!-- 2. MODERN ROADMAP VIEW -->
         <div id="roadmap-view" class="view-section">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
                 <div>
@@ -287,6 +293,7 @@
             </div>
         </div>
 
+        <!-- 3. CARTOON CITY MMO VIEW -->
         <div id="world-view" class="view-section">
             <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus</h2>
             <div class="world-layout">
@@ -309,9 +316,10 @@
             </div>
         </div>
 
+        <!-- 4. FORUM VIEW -->
         <div id="forum-view" class="view-section">
             <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
-                <h2 style="font-size: 2rem;">Thảo luận Chuyên môn</h2>
+                <h2 style="font-size: 2rem;">The Hub - Trung tâm Giao lưu</h2>
                 <button class="btn" onmouseenter="uiHover()" onclick="uiClick()">+ Tạo bài viết mới</button>
             </div>
             
@@ -345,6 +353,7 @@
             </details>
         </div>
 
+        <!-- 5. TOURNAMENT VIEW -->
         <div id="tour-view" class="view-section">
             <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh</h2>
             <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh lành mạnh dựa trên số Tín chỉ tích lũy được.</p>
@@ -372,6 +381,7 @@
         </div>
     </div>
 
+    <!-- MODAL 1: ROADMAP DETAILS -->
     <div class="modal-overlay" id="nodeModal">
         <div class="node-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeNodeModal()">✕</div>
@@ -388,7 +398,8 @@
                         <div class="details-content" id="modal-syllabus">Nội dung...</div>
                     </details>
                     
-                    <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học Ngoại vi (Đề xuất)</h4>
+                    <!-- THAY TỪ NGOẠI VI THÀNH BÊN THỨ BA -->
+                    <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học từ Bên thứ ba (Đề xuất)</h4>
                     <div id="modal-courses"></div>
                 </div>
 
@@ -399,7 +410,8 @@
                     </video>
                     
                     <div style="flex: 1; border: 1px dashed var(--border-color); border-radius: 8px; padding: 15px; text-align: center; background: #fafafa;">
-                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Xem kỹ video và tài liệu trước khi xác nhận hoàn thành học phần.</p>
+                        <!-- ĐỔI THÀNH "Xem kĩ" THEO FEEDBACK -->
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Xem kĩ video và tài liệu trước khi xác nhận hoàn thành học phần.</p>
                         <button class="btn" id="modal-complete-btn" style="width: 100%; font-size: 1rem;" onmouseenter="uiHover()"></button>
                     </div>
                 </div>
@@ -407,6 +419,7 @@
         </div>
     </div>
 
+    <!-- MODAL 2: KPI / RADAR DASHBOARD -->
     <div class="modal-overlay" id="kpiModal">
         <div class="kpi-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeKPIModal()">✕</div>
@@ -432,6 +445,7 @@
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <!-- Radar Chart -->
                 <div class="card">
                     <h3 style="text-align: center; color: var(--primary); margin-bottom: 10px;">Phổ Kỹ Năng Đa Chiều</h3>
                     <div class="radar-container">
@@ -478,6 +492,7 @@
         </div>
     </div>
 
+    <!-- CHATBOT WIDGET -->
     <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </div>
@@ -516,23 +531,23 @@
             else { btn.innerText = "🔇 Âm thanh: TẮT"; btn.classList.add('muted'); }
         }
 
-        // --- 2. LOGIC & DATA VỚI COURSERA LINKS ---
+        // --- 2. LOGIC & DATA (ĐÃ SỬA CÁC LINK COURSERA HOẠT ĐỘNG THẬT) ---
         let user = { name: "Khách", xp: 0, credits: 0, level: 1 };
         let activeNodeId = null;
 
         const roadmapData = {
             sale: [
-                { id: "s1", title: "Tổng quan B2B & Phễu", desc: "Hiểu rõ vòng đời bán hàng và phễu khách hàng.", syl: "- Mindset người làm Sales<br>- Phễu Khách hàng cơ bản", courses: [{n: "Coursera: Sales Management", l: "https://www.coursera.org/learn/sales-management"}], x: 10, y: 50, req: [] },
-                { id: "s2", title: "Prospecting & Lead Gen", desc: "Xây dựng tệp khách hàng tiềm năng.", syl: "- Cold Calling<br>- Cold Email<br>- LinkedIn B2B", courses: [{n: "Coursera: Lead Generation", l: "https://www.coursera.org/learn/b2b-lead-generation"}], x: 35, y: 30, req: ["s1"] },
-                { id: "s3", title: "Thấu hiểu Tâm lý", desc: "Đọc vị Pain point (nỗi đau) của Giám đốc mua hàng.", syl: "- Kỹ năng lắng nghe<br>- Tháp nhu cầu", courses: [{n: "Coursera: Negotiation Skills", l: "https://www.coursera.org/learn/negotiation-skills"}], x: 35, y: 70, req: ["s1"] },
+                { id: "s1", title: "Tổng quan B2B & Phễu", desc: "Hiểu rõ vòng đời bán hàng và phễu khách hàng.", syl: "- Mindset người làm Sales<br>- Phễu Khách hàng cơ bản", courses: [{n: "Coursera: Sales Training for High Performing", l: "https://www.coursera.org/learn/sales-training"}], x: 10, y: 50, req: [] },
+                { id: "s2", title: "Prospecting & Lead Gen", desc: "Xây dựng tệp khách hàng tiềm năng.", syl: "- Cold Calling<br>- Cold Email<br>- LinkedIn B2B", courses: [{n: "Coursera: B2B Lead Generation", l: "https://www.coursera.org/learn/b2b-lead-generation"}], x: 35, y: 30, req: ["s1"] },
+                { id: "s3", title: "Thấu hiểu Tâm lý", desc: "Đọc vị Pain point (nỗi đau) của Giám đốc mua hàng.", syl: "- Kỹ năng lắng nghe<br>- Tháp nhu cầu", courses: [{n: "Coursera: Successful Negotiation", l: "https://www.coursera.org/learn/negotiation-skills"}], x: 35, y: 70, req: ["s1"] },
                 { id: "s4", title: "Vượt 'Gatekeeper'", desc: "Kỹ thuật qua mặt Lễ tân để tiếp cận đúng người.", syl: "- Kịch bản Telesale<br>- Đặt câu hỏi mở", courses: [], x: 60, y: 50, req: ["s2", "s3"] },
                 { id: "s5", title: "Pitching & Demo", desc: "Trình bày giải pháp.", syl: "- Storytelling trong Sales<br>- Làm Slide thuyết phục", courses: [], x: 85, y: 30, req: ["s4"] },
                 { id: "s6", title: "Đàm phán & Chốt Deal", desc: "Đàm phán giá cả và xử lý từ chối.", syl: "- Tính ROI cho khách<br>- Kỹ thuật chốt hạ", courses: [], x: 85, y: 70, req: ["s4"] }
             ],
             logistics: [
-                { id: "l1", title: "Cơ bản SCM", desc: "Tổng quan Chuỗi cung ứng.", syl: "- Dòng chảy hàng hóa<br>- Bullwhip effect", courses: [{n: "Coursera: Supply Chain Management", l: "https://www.coursera.org/specializations/supply-chain-management"}], x: 15, y: 50, req: [] },
-                { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm & đàm phán Nhà cung cấp.", syl: "- Đánh giá Supplier<br>- Hợp đồng thương mại", courses: [{n: "Coursera: Supply Chain Logistics", l: "https://www.coursera.org/learn/supply-chain-logistics"}], x: 40, y: 25, req: ["l1"] },
-                { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí.", syl: "- Mô hình EOQ<br>- Rủi ro JIT", courses: [], x: 40, y: 75, req: ["l1"] },
+                { id: "l1", title: "Cơ bản SCM", desc: "Tổng quan Chuỗi cung ứng.", syl: "- Dòng chảy hàng hóa<br>- Bullwhip effect", courses: [{n: "Coursera: Supply Chain Logistics (LINK CHUẨN)", l: "https://www.coursera.org/learn/supply-chain-logistics"}], x: 15, y: 50, req: [] },
+                { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm & đàm phán Nhà cung cấp.", syl: "- Đánh giá Supplier<br>- Hợp đồng thương mại", courses: [{n: "Coursera: Supply Chain Operations", l: "https://www.coursera.org/learn/supply-chain-operations"}], x: 40, y: 25, req: ["l1"] },
+                { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí.", syl: "- Mô hình EOQ<br>- Rủi ro JIT", courses: [{n: "Coursera: Supply Chain Planning", l: "https://www.coursera.org/learn/supply-chain-planning"}], x: 40, y: 75, req: ["l1"] },
                 { id: "l4", title: "Vận tải Đa phương thức", desc: "Luân chuyển nội địa & Quốc tế.", syl: "- Incoterms 2020<br>- Cước phí", courses: [], x: 70, y: 50, req: ["l2", "l3"] },
                 { id: "l5", title: "Hệ thống ERP", desc: "Số hóa quy trình.", syl: "- SAP/Oracle<br>- Tích hợp data", courses: [], x: 95, y: 50, req: ["l4"] }
             ],
@@ -575,11 +590,16 @@
             if(viewId === 'roadmap-view') { renderRoadmap(); }
         }
 
-        // --- AUTH LOGIC ---
+        // --- AUTH LOGIC (SỬA LỖI ĐỒNG BỘ ĐỂ KHÔNG BỊ KHÓA 0 TÍN CHỈ) ---
         function handleLogin() {
             initAudio(); uiClick(); uiSuccess();
             const nameInput = document.getElementById('login-name').value;
             user.name = nameInput ? nameInput : "Nguyễn Văn A";
+            
+            // Tải lại các biến XP/Tín chỉ cũ để đồng bộ nút bấm
+            user.xp = parseInt(localStorage.getItem('user_xp')) || 0;
+            user.credits = parseInt(localStorage.getItem('user_credit')) || 0;
+            user.level = Math.floor(user.xp / 100) + 1;
             
             document.getElementById('hdr-name').innerText = user.name;
             document.getElementById('tour-my-name').innerText = user.name;
@@ -605,6 +625,8 @@
 
         function handleLogout() {
             uiClick();
+            // Xóa bộ nhớ khi logout giúp người dùng test tính năng cộng điểm từ đầu một cách dễ dàng
+            localStorage.clear();
             user = { name: "Khách", xp: 0, credits: 0, level: 1 };
             document.getElementById('hdr-name').innerText = "Khách";
             document.getElementById('hdr-name').style.color = "var(--text-muted)";
@@ -622,6 +644,10 @@
         function updateStats(addXp, addCredit) {
             user.xp += addXp; user.credits += addCredit;
             user.level = Math.floor(user.xp / 100) + 1;
+            
+            // Đẩy điểm vào bộ nhớ trình duyệt để đồng bộ vĩnh viễn
+            localStorage.setItem('user_xp', user.xp);
+            localStorage.setItem('user_credit', user.credits);
             
             document.getElementById('hdr-xp').innerText = user.xp;
             document.getElementById('hdr-credit').innerText = user.credits;
@@ -712,7 +738,7 @@
             });
         }
 
-        // --- MODAL 1: ROADMAP DETAILS ---
+        // --- MODAL ROADMAP DETAILS ---
         function openNodeModal(node, isCompleted) {
             activeNodeId = node.id;
             document.getElementById('modal-title').innerText = node.title;
@@ -722,7 +748,6 @@
             const detailsElement = document.getElementById('modal-syllabus').parentElement;
             detailsElement.removeAttribute('open');
             
-            // XỬ LÝ COURSERA LINKS
             const courseContainer = document.getElementById('modal-courses');
             courseContainer.innerHTML = '';
             if(node.courses && node.courses.length > 0) {
@@ -747,11 +772,8 @@
         }
         function closeNodeModal() { document.getElementById('nodeModal').classList.remove('show'); }
 
-        // --- MODAL 2: KPI DASHBOARD ---
-        function openKPIModal() { 
-            if(user.name === "Khách") return; 
-            uiClick(); document.getElementById('kpiModal').classList.add('show'); 
-        }
+        // --- MODAL KPI DASHBOARD ---
+        function openKPIModal() { if(user.name === "Khách") return; uiClick(); document.getElementById('kpiModal').classList.add('show'); }
         function closeKPIModal() { document.getElementById('kpiModal').classList.remove('show'); }
 
         // --- MMO CHAT ---
@@ -801,7 +823,6 @@
                     } else if (lowerText.includes("canvas") || lowerText.includes("gsap") || lowerText.includes("web")) {
                         reply = "Với Web Frontend, hiệu ứng Parallax bằng GSAP kết hợp Canvas sẽ giúp web tránh bị giật lag và không bị vỡ ảnh.";
                     }
-                    
                     cb.innerHTML += `<div class="msg bot">${reply}</div>`;
                     cb.scrollTop = cb.scrollHeight;
                 }, 800);
@@ -816,27 +837,20 @@
             const wrapper = canvas.parentElement; cw = wrapper.clientWidth; ch = wrapper.clientHeight;
             const dpr = window.devicePixelRatio || 1; canvas.width = cw * dpr; canvas.height = ch * dpr; ctx.scale(dpr, dpr);
         }
-        
         function drawCartoonBuilding(x, y, w, h, height, roofColor, wallLeft, wallRight) {
             ctx.fillStyle = wallLeft; ctx.beginPath(); ctx.moveTo(x - w, y); ctx.lineTo(x, y + h); ctx.lineTo(x, y + h - height); ctx.lineTo(x - w, y - height); ctx.fill();
             ctx.fillStyle = wallRight; ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y - height); ctx.lineTo(x, y + h - height); ctx.fill();
             ctx.fillStyle = roofColor; ctx.beginPath(); ctx.moveTo(x, y - height - h); ctx.lineTo(x + w, y - height); ctx.lineTo(x, y - height + h); ctx.lineTo(x - w, y - height); ctx.fill();
         }
-
         function drawIsoGround(x, y, w, h, color) {
-            ctx.fillStyle = color; ctx.beginPath();
-            ctx.moveTo(x, y - h); ctx.lineTo(x + w, y); ctx.lineTo(x, y + h); ctx.lineTo(x - w, y); ctx.closePath(); ctx.fill();
+            ctx.fillStyle = color; ctx.beginPath(); ctx.moveTo(x, y - h); ctx.lineTo(x + w, y); ctx.lineTo(x, y + h); ctx.lineTo(x - w, y); ctx.closePath(); ctx.fill();
         }
-
         function drawCartoonHuman(x, y, colorBody, name) {
-            ctx.fillStyle = "rgba(0,0,0,0.15)";
-            ctx.beginPath(); ctx.ellipse(x, y, 10, 5, 0, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = "rgba(0,0,0,0.15)"; ctx.beginPath(); ctx.ellipse(x, y, 10, 5, 0, 0, Math.PI*2); ctx.fill();
             ctx.fillStyle = colorBody; ctx.beginPath(); ctx.roundRect(x - 7, y - 18, 14, 18, 5); ctx.fill();
             ctx.fillStyle = "#ffedd5"; ctx.beginPath(); ctx.arc(x, y - 24, 7, 0, Math.PI*2); ctx.fill();
-            ctx.fillStyle = "#1e293b"; ctx.font = "bold 11px Inter, sans-serif"; ctx.textAlign = "center";
-            ctx.fillText(name, x, y - 38);
+            ctx.fillStyle = "#1e293b"; ctx.font = "bold 11px Inter, sans-serif"; ctx.textAlign = "center"; ctx.fillText(name, x, y - 38);
         }
-        
         function animateCity(currentTime) {
             const deltaTime = currentTime - lastTime; lastTime = currentTime;
             frameCount++; ctx.clearRect(0, 0, cw, ch);
@@ -844,7 +858,6 @@
 
             const style = cityStyles[currentDiscipline] || cityStyles.web;
             document.getElementById('canvas-bg').style.background = style.bg;
-
             const map = cityMaps[currentDiscipline] || cityMaps.web;
             const players = dummyPlayersData[currentDiscipline] || dummyPlayersData.web;
 
@@ -860,7 +873,6 @@
                     else { drawIsoGround(x, y, tW, tH, style.ground); }
                 }
             }
-
             for(let r = 0; r < map.length; r++) {
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
@@ -869,27 +881,18 @@
                     else if(map[r][c] === 4) { drawCartoonBuilding(x, y, tW-2, tH-1, 20, style.b1.r, style.b1.w, style.b2.w); }
                 }
             }
-            
             players.forEach(p => {
-                const px = originX + (p.c - p.r) * tW; 
-                const basePy = originY + (p.c + p.r) * tH;
+                const px = originX + (p.c - p.r) * tW; const basePy = originY + (p.c + p.r) * tH;
                 const py = basePy + Math.sin(frameCount * 0.08 + p.offset) * 4;
                 drawCartoonHuman(px, py, p.color, p.name);
             });
-
             const uX = originX + (2 - 2) * tW; const baseUy = originY + (2 + 2) * tH;
             const uY = baseUy + Math.sin(frameCount * 0.1) * 6; 
-            
-            let myColor = "var(--primary)";
-            if(user.credits >= 10) myColor = "var(--success)";
-            
+            let myColor = "var(--primary)"; if(user.credits >= 10) myColor = "var(--success)";
             drawCartoonHuman(uX, uY, myColor, user.name + " (Bạn)");
-
             cityFrameId = requestAnimationFrame(animateCity);
         }
-
         window.addEventListener('resize', () => { if(document.getElementById('world-view').classList.contains('active')) { initCanvas(); } });
-
     </script>
 </body>
 </html>

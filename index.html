@@ -185,11 +185,11 @@
     <nav class="sidebar">
         <div class="brand">Our<span>Path</span></div>
         <ul class="menu-list">
-            <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Bắt đầu Hành trình</li>
-            <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Tương lai</li>
+            <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Khởi tạo Hồ sơ</li>
+            <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Đào tạo</li>
             <li class="menu-item" style="display: none;" id="menu-world" onmouseenter="uiHover()" onclick="navTo('world-view', this)">🏙️ OurPath City</li>
-            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 Thảo luận Cộng đồng</li>
-            <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-kpi-view', this)">📈 Đánh giá Năng lực</li>
+            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 The Hub (Forum)</li>
+            <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-kpi-view', this)">🏆 Giải đấu & KPI</li>
             
             <li class="menu-item logout-btn" style="display: none;" id="menu-logout" onmouseenter="uiHover()" onclick="handleLogout()">🚪 Đăng xuất</li>
         </ul>
@@ -200,12 +200,11 @@
         <header>
             <div class="header-controls">
                 <div class="discipline-switcher" id="hdr-discipline" style="display: none;">
-                    <span style="color: var(--text-muted); font-weight: 600;">Ngành học:</span>
+                    <span style="color: var(--text-muted); font-weight: 600;">Nhánh học:</span>
                     <select id="discipline-select" onchange="uiClick(); switchDiscipline();">
                         <option value="sale">Kinh doanh & Bán hàng B2B</option>
                         <option value="logistics">Logistics & Chuỗi cung ứng</option>
-                        <option value="marketing">Digital Marketing</option>
-                        <option value="web">Web Frontend (Tech)</option>
+                        <option value="web">Công nghệ (Web Frontend)</option>
                     </select>
                 </div>
             </div>
@@ -220,8 +219,8 @@
         <!-- 1. AUTH & SALES LANDING VIEW -->
         <div id="auth-view" class="view-section active">
             <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
-                <h1 style="font-size: 3rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
-                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng đào tạo thực chiến hàng đầu tập trung vào các nhóm ngành khát nhân sự: Sales B2B, Logistics, và Công nghệ. Học qua dự án, kết nối cộng đồng.</p>
+                <h1 style="font-size: 3rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Mở khóa Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng đào tạo thực chiến tập trung vào các nhóm ngành khát nhân sự: Sales B2B, Logistics, và Công nghệ Frontend. Học qua dự án, kết nối cộng đồng.</p>
             </div>
 
             <div class="card" style="max-width: 500px; margin: 0 auto; border-top: 4px solid var(--secondary);">
@@ -229,7 +228,6 @@
                 
                 <div class="input-group">
                     <label>Họ và tên của bạn</label>
-                    <!-- Giữ nguyên Default Name theo dữ liệu context để tạo sự thuận tiện -->
                     <input type="text" id="login-name" value="Nguyễn Minh Quang" placeholder="Nhập tên của bạn...">
                 </div>
                 
@@ -238,13 +236,12 @@
                     <select id="survey-major">
                         <option value="sale">Chuyên viên Kinh doanh / Bán hàng B2B</option>
                         <option value="logistics">Quản lý Logistics & Chuỗi cung ứng</option>
-                        <option value="marketing">Chuyên viên Digital Marketing</option>
                         <option value="web">Lập trình viên Web (Frontend/UI)</option>
                     </select>
                 </div>
 
-                <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Bắt đầu Học ngay (Miễn phí)</button>
-                <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">* Bằng cách nhấp vào Bắt đầu, hệ thống AI sẽ thiết lập lộ trình học tối ưu dành riêng cho bạn.</p>
+                <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Khởi tạo Lộ trình (Miễn phí)</button>
+                <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">* Bằng cách nhấp vào nút trên, hệ thống AI sẽ thiết lập lộ trình học tối ưu dành riêng cho bạn.</p>
             </div>
         </div>
 
@@ -252,11 +249,11 @@
         <div id="roadmap-view" class="view-section">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
                 <div>
-                    <h2 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Lộ trình Đào tạo Thực chiến</h2>
-                    <p style="color: var(--text-muted); font-size: 1rem;">Mở khóa từng chặng kiến thức. Cần hoàn thành học phần trước để đi tiếp.</p>
+                    <h2 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Bản đồ Tri thức Đa nhánh</h2>
+                    <p style="color: var(--text-muted); font-size: 1rem;">Mở khóa từng chặng kiến thức. Click vào Node để tải tài liệu và thực hành.</p>
                 </div>
                 <div style="background: white; padding: 10px 20px; border-radius: 30px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); font-weight: 700;">
-                    Tiến độ: <span id="rm-percent-text" style="color: var(--primary);">0%</span>
+                    Tiến độ hoàn thành: <span id="rm-percent-text" style="color: var(--primary);">0%</span>
                 </div>
             </div>
             <div class="roadmap-wrapper" id="roadmap-container">
@@ -267,18 +264,18 @@
 
         <!-- 3. CARTOON CITY MMO VIEW -->
         <div id="world-view" class="view-section">
-            <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus (3D Hoạt hình)</h2>
             <div class="world-layout">
                 <div class="canvas-wrapper">
                     <canvas id="cityCanvas"></canvas>
                     <div class="city-hud">
-                        <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; font-weight: 800;">Khuôn viên Học tập 3D</div>
+                        <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; font-weight: 800;">Khuôn viên Học tập Thực tế ảo</div>
                         <div style="color: var(--text-muted); font-size: 0.9rem;">Học viên đang online: <strong style="color: var(--success)">1,402</strong></div>
                     </div>
                 </div>
                 
                 <div class="world-chat-panel">
-                    <div class="chat-title">Cộng đồng Sinh viên</div>
+                    <div class="chat-title">Kênh Chat Toàn Máy Chủ</div>
                     <div class="world-messages" id="world-chat-box"></div>
                     <div class="chat-input-area">
                         <input type="text" id="world-chat-input" placeholder="Trò chuyện cùng mọi người..." onkeypress="handleWorldChat(event)">
@@ -291,7 +288,7 @@
         <!-- 4. FORUM VIEW -->
         <div id="forum-view" class="view-section">
             <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
-                <h2 style="font-size: 2rem;">Thảo luận Chuyên môn</h2>
+                <h2 style="font-size: 2rem;">Thảo luận Cộng đồng</h2>
                 <button class="btn" onmouseenter="uiHover()" onclick="uiClick()">+ Tạo bài viết mới</button>
             </div>
             
@@ -318,12 +315,12 @@
                     <div>
                         <span style="background: #dcfce7; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; color: #059669; margin-right: 8px; font-weight: 700;">#Logistics</span>
                         <h3 style="margin: 12px 0 8px 0; font-size: 1.3rem;">Mô hình JIT (Just-In-Time) có còn hiệu quả sau đứt gãy chuỗi cung ứng?</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">Đăng bởi: Chuyên gia Logistics - 3 giờ trước</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">Đăng bởi: Chuyên gia Kho Vận - 3 giờ trước</p>
                     </div>
                     <div style="color: var(--primary);">Xem thảo luận ▼</div>
                 </summary>
                 <div class="details-content">
-                    <p>Chúng ta cùng thảo luận về rủi ro của JIT khi xảy ra biến động toàn cầu (như dịch bệnh, tắc nghẽn kênh đào). Mọi người nghĩ tồn kho an toàn (Safety Stock) nên tăng lên bao nhiêu %?</p>
+                    <p>Chúng ta cùng thảo luận về rủi ro của JIT khi xảy ra biến động toàn cầu. Mọi người nghĩ tồn kho an toàn (Safety Stock) nên tăng lên bao nhiêu %?</p>
                 </div>
             </details>
         </div>
@@ -333,26 +330,26 @@
             <div class="tour-kpi-layout">
                 <!-- Phần Tournament (Đưa lên trên) -->
                 <div>
-                    <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh</h2>
-                    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh lành mạnh dựa trên số Tín chỉ tích lũy được.</p>
+                    <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh (Tournament)</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh thi đua dựa trên số Tín chỉ tích lũy được trong các học phần.</p>
                     
                     <ul class="leaderboard-list">
                         <li class="lb-item gold" onmouseenter="uiHover()">
                             <span style="font-size: 3rem; margin-bottom: 15px;">🏆</span>
                             <strong style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">#1. Lê Phương Thảo</strong>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Chuyên gia Digital Marketing</div>
+                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Best Seller B2B</div>
                             <div style="font-size: 1.5rem; font-weight: 900; color: #d97706;">350 TÍN</div>
                         </li>
                         <li class="lb-item silver" onmouseenter="uiHover()">
                             <span style="font-size: 3rem; margin-bottom: 15px;">🥈</span>
                             <strong style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">#2. Hoàng Văn Thái</strong>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Logistics & SCM</div>
+                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Logistics Master</div>
                             <div style="font-size: 1.5rem; font-weight: 900; color: #475569;">290 TÍN</div>
                         </li>
                         <li class="lb-item bronze" style="border: 2px solid var(--primary);" onmouseenter="uiHover()">
                             <span style="font-size: 3rem; margin-bottom: 15px;">🌟</span>
                             <strong style="font-size: 1.2rem; color: var(--primary); margin-bottom: 5px;">#3. <span id="tour-my-name">GUEST</span> (Bạn)</strong>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Đang thiết lập...</div>
+                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Tân binh tiềm năng</div>
                             <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary);"><span id="tour-my-credit">0</span> TÍN</div>
                         </li>
                     </ul>
@@ -362,7 +359,7 @@
 
                 <!-- Phần KPI Dashboard (Đưa xuống dưới) -->
                 <div>
-                    <h2 style="font-size: 2rem; margin-bottom: 25px;">Đánh giá Năng lực Tổng hợp (KPI)</h2>
+                    <h2 style="font-size: 2rem; margin-bottom: 25px;">Đánh giá Năng lực (KPI Dashboard)</h2>
                     
                     <div class="dash-top-grid">
                         <div class="card" style="text-align: center;">
@@ -386,7 +383,7 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
                         <!-- Radar Chart -->
                         <div class="card">
-                            <h3 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Phân tích Phổ Kỹ Năng Đa Chiều</h3>
+                            <h3 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Phân tích Kỹ năng Đa nhiệm</h3>
                             <div class="radar-container">
                                 <svg class="radar-svg" viewBox="0 0 200 200">
                                     <polygon points="100,20 180,60 180,140 100,180 20,140 20,60" fill="none" stroke="#e2e8f0" stroke-width="1"/>
@@ -401,7 +398,7 @@
                                     <polygon id="skill-poly" points="100,60 130,75 160,130 100,150 40,130 70,75" fill="rgba(37, 99, 235, 0.2)" stroke="var(--primary)" stroke-width="2"/>
                                     
                                     <text x="100" y="12" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">Giao tiếp / Sales</text>
-                                    <text x="185" y="60" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Marketing</text>
+                                    <text x="185" y="60" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Tâm lý học</text>
                                     <text x="185" y="145" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Quản trị Kho</text>
                                     <text x="100" y="195" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">Tech / Frontend</text>
                                     <text x="15" y="145" fill="#475569" font-size="10" font-weight="bold" text-anchor="end">Logic / Data</text>
@@ -471,7 +468,7 @@
             <span>Trợ lý OurPath AI</span> <span>▼</span>
         </div>
         <div class="chat-body" id="chat-body">
-            <div class="msg bot">Chào bạn! Mình là Trợ lý AI của OurPath. Mình có thể hỗ trợ bạn kiến thức về Sales B2B, vận hành chuỗi cung ứng, Marketing, hoặc lập trình Web. Bạn cần hỏi gì?</div>
+            <div class="msg bot">Chào bạn! Mình là Trợ lý AI của OurPath. Mình có thể hỗ trợ bạn kiến thức về Sales B2B, vận hành Logistics, hay lập trình Web Frontend. Bạn cần hỏi gì?</div>
         </div>
         <div class="chat-input">
             <input type="text" id="chat-input-field" placeholder="Nhập câu hỏi của bạn..." onkeypress="handleChatBot(event)">
@@ -491,8 +488,8 @@
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(); osc.stop(audioCtx.currentTime + duration);
         }
-        function uiHover() { playTone(1200, 'sine', 0.03, 0.01); } // Tiếng hover nhẹ nhàng
-        function uiClick() { playTone(800, 'sine', 0.05, 0.03); } // Tiếng click chắc chắn
+        function uiHover() { playTone(1200, 'sine', 0.03, 0.01); } 
+        function uiClick() { playTone(800, 'sine', 0.05, 0.03); } 
         function uiSuccess() { playTone(800, 'sine', 0.1, 0.05); setTimeout(() => playTone(1200, 'sine', 0.15, 0.05), 100); }
         function uiError() { playTone(400, 'triangle', 0.15, 0.03); }
         function toggleSound() {
@@ -501,31 +498,28 @@
             else { btn.innerText = "🔇 Âm thanh: TẮT"; btn.classList.add('muted'); }
         }
 
-        // --- 2. LOGIC & DATA (Updated with Trending Industries) ---
+        // --- 2. LOGIC & ROADMAP DATA (Đã bỏ Giải tích/Đại số, tập trung xu hướng) ---
         let user = { name: "Khách", xp: 0, credits: 0, level: 1 };
         let activeNodeId = null;
 
         const roadmapData = {
             sale: [
-                { id: "s1", title: "Tổng quan B2B", desc: "Hiểu rõ sự khác biệt giữa quy trình bán hàng B2B và B2C.", syl: "1. Vòng đời bán hàng doanh nghiệp<br>2. Phễu khách hàng", x: 10, y: 50, req: [] },
-                { id: "s2", title: "Tìm kiếm Lead", desc: "Xây dựng tệp khách hàng tiềm năng chất lượng.", syl: "1. Kỹ năng Cold Calling<br>2. Gửi Cold Email tối ưu<br>3. LinkedIn Networking", x: 35, y: 30, req: ["s1"] },
-                { id: "s3", title: "Nắm bắt Tâm lý", desc: "Đọc vị nhu cầu của Giám đốc mua hàng/CEO.", syl: "1. Tháp nhu cầu<br>2. Khơi gợi nỗi đau (Pain points)", x: 35, y: 70, req: ["s1"] },
-                { id: "s4", title: "Vượt qua Lễ tân", desc: "Kỹ thuật đi qua 'Gatekeeper' để gặp đúng người ra quyết định.", syl: "1. Tạo sự tự tin<br>2. Đặt câu hỏi thông minh", x: 60, y: 50, req: ["s2", "s3"] },
-                { id: "s5", title: "Chốt Deal & Hợp đồng", desc: "Kỹ thuật đàm phán giá cả và xử lý từ chối cuối cùng.", syl: "1. Giải quyết câu 'Giá đắt quá'<br>2. Chốt Sales ROI", x: 85, y: 50, req: ["s4"] }
+                { id: "s1", title: "Tổng quan Sales B2B", desc: "Hiểu rõ sự khác biệt giữa quy trình bán hàng B2B và B2C.", syl: "1. Vòng đời bán hàng doanh nghiệp<br>2. Phễu khách hàng", x: 10, y: 50, req: [] },
+                { id: "s2", title: "Tìm kiếm Lead", desc: "Xây dựng tệp khách hàng tiềm năng chất lượng.", syl: "1. Kỹ năng Cold Calling<br>2. Gửi Cold Email tối ưu<br>3. LinkedIn Networking", x: 30, y: 30, req: ["s1"] },
+                { id: "s3", title: "Tâm lý học Hành vi", desc: "Đọc vị nhu cầu của Giám đốc mua hàng/CEO.", syl: "1. Tháp nhu cầu Maslow<br>2. Khơi gợi nỗi đau (Pain points)", x: 30, y: 70, req: ["s1"] },
+                { id: "s4", title: "Kịch bản Telesale", desc: "Soạn thảo kịch bản gọi điện chốt lịch hẹn hiệu quả.", syl: "1. Xây dựng Script<br>2. Hook trong 30s đầu", x: 50, y: 30, req: ["s2"] },
+                { id: "s5", title: "Vượt qua Lễ tân", desc: "Kỹ thuật đi qua 'Gatekeeper' để gặp đúng người ra quyết định.", syl: "1. Tạo sự tự tin<br>2. Đặt câu hỏi thông minh", x: 50, y: 70, req: ["s3"] },
+                { id: "s6", title: "Pitching & Demo", desc: "Trình bày giải pháp thu hút.", syl: "1. Kỹ năng thuyết trình<br>2. Tạo Slide Bán hàng", x: 70, y: 50, req: ["s4", "s5"] },
+                { id: "s7", title: "Đàm phán Giá", desc: "Kỹ thuật bảo vệ biên độ lợi nhuận.", syl: "1. Xử lý câu 'Giá đắt quá'<br>2. Win-Win Situation", x: 90, y: 30, req: ["s6"] },
+                { id: "s8", title: "Chốt Deal (Closing)", desc: "Kỹ thuật chốt hạ hợp đồng.", syl: "1. Chốt Sales bằng ROI<br>2. Ký kết và chăm sóc", x: 90, y: 70, req: ["s6"] }
             ],
             logistics: [
                 { id: "l1", title: "Cơ bản về SCM", desc: "Tổng quan về Chuỗi cung ứng và Logistics.", syl: "1. Dòng tiền, Thông tin, Hàng hóa", x: 15, y: 50, req: [] },
-                { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm, đánh giá và đàm phán với Nhà cung cấp.", syl: "1. Tiêu chí chọn Supplier<br>2. Hợp đồng mua bán", x: 40, y: 25, req: ["l1"] },
-                { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí lưu kho, cân bằng cung cầu.", syl: "1. Mô hình EOQ<br>2. Rủi ro của JIT (Just-in-Time)", x: 40, y: 75, req: ["l1"] },
-                { id: "l4", title: "Vận tải Đa phương thức", desc: "Quy trình luân chuyển hàng hóa nội địa và quốc tế.", syl: "1. Incoterms 2020<br>2. Tối ưu chi phí Cước", x: 70, y: 50, req: ["l2", "l3"] },
-                { id: "l5", title: "Vận hành ERP", desc: "Sử dụng phần mềm quản lý kho vận chuyên nghiệp.", syl: "1. SAP / Oracle cơ bản<br>2. Số hóa chuỗi cung ứng", x: 95, y: 50, req: ["l4"] }
-            ],
-            marketing: [
-                { id: "mk1", title: "Nghiên cứu Thị trường", desc: "Phân tích sản phẩm và nhu cầu thị trường số.", syl: "1. Phân tích SWOT<br>2. Lập Customer Persona", x: 15, y: 50, req: [] },
-                { id: "mk2", title: "Content Marketing", desc: "Xây dựng nội dung thu hút và giữ chân người dùng.", syl: "1. Copywriting cơ bản<br>2. Storytelling", x: 45, y: 30, req: ["mk1"] },
-                { id: "mk3", title: "SEO Foundation", desc: "Tối ưu hóa công cụ tìm kiếm, đưa web lên top Google.", syl: "1. Nghiên cứu Keyword<br>2. On-page & Off-page SEO", x: 45, y: 70, req: ["mk1"] },
-                { id: "mk4", title: "Performance Ads", desc: "Chạy quảng cáo chuyển đổi trên Facebook/Google.", syl: "1. Cấu trúc chiến dịch<br>2. Đọc chỉ số CTR, CPC, CPA", x: 75, y: 50, req: ["mk2", "mk3"] },
-                { id: "mk5", title: "Data Analytics", desc: "Phân tích dữ liệu người dùng để tối ưu chiến dịch.", syl: "1. Google Analytics 4<br>2. A/B Testing", x: 95, y: 50, req: ["mk4"] }
+                { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm, đánh giá và đàm phán với Nhà cung cấp.", syl: "1. Tiêu chí chọn Supplier<br>2. Hợp đồng mua bán", x: 35, y: 25, req: ["l1"] },
+                { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí lưu kho, cân bằng cung cầu.", syl: "1. Mô hình EOQ<br>2. JIT & Safety Stock", x: 35, y: 75, req: ["l1"] },
+                { id: "l4", title: "Hành chính & Hải quan", desc: "Hiểu thủ tục thông quan hàng hóa.", syl: "1. Khai báo hải quan<br>2. Chứng từ xuất nhập khẩu", x: 60, y: 50, req: ["l2", "l3"] },
+                { id: "l5", title: "Vận tải Đa phương thức", desc: "Quy trình luân chuyển hàng hóa nội địa và quốc tế.", syl: "1. Incoterms 2020<br>2. Tối ưu chi phí Cước", x: 85, y: 30, req: ["l4"] },
+                { id: "l6", title: "Vận hành ERP", desc: "Sử dụng phần mềm quản lý kho vận chuyên nghiệp.", syl: "1. SAP / Oracle cơ bản<br>2. Số hóa chuỗi cung", x: 85, y: 70, req: ["l4"] }
             ],
             web: [
                 { id: "w1", title: "HTML/CSS Foundation", desc: "Nền tảng thiết kế giao diện tĩnh.", syl: "1. Flexbox/Grid<br>2. Responsive UI", x: 10, y: 50, req: [] },
@@ -551,14 +545,13 @@
         function handleLogin() {
             initAudio(); uiClick(); uiSuccess();
             const nameInput = document.getElementById('login-name').value;
-            user.name = nameInput ? nameInput : "Nguyễn Minh Quang";
+            user.name = nameInput ? nameInput : "Học viên OurPath";
             
             document.getElementById('hdr-name').innerText = user.name;
             document.getElementById('tour-my-name').innerText = user.name;
             document.getElementById('hdr-name').style.color = "var(--primary)";
             
             // Toggle Menus
-            document.getElementById('menu-dash').style.display = "none"; // Dashboard is now merged to tour-kpi-view
             document.getElementById('menu-road').style.display = "flex";
             document.getElementById('menu-world').style.display = "flex";
             document.getElementById('menu-forum').style.display = "flex";
@@ -573,7 +566,7 @@
             currentDiscipline = chosenMajor;
 
             updateStats(0,0);
-            navTo('roadmap-view', document.getElementById('menu-road')); // Vào thẳng roadmap cho hứng thú
+            navTo('roadmap-view', document.getElementById('menu-road')); // Vào thẳng roadmap
             
             setTimeout(() => addWorldMsg("Hệ thống OurPath", `Chào mừng ${user.name} đã tham gia nền tảng đào tạo thực chiến.`), 2000);
         }
@@ -770,22 +763,26 @@
             }
         }
 
-        // --- CARTOON CITY 3D (Bright SimCity Style) ---
+        // --- CARTOON CITY 3D (Bright SimCity Style with Multiple Avatars) ---
         const canvas = document.getElementById('cityCanvas'); const ctx = canvas.getContext('2d');
         let cw, ch; let cityFrameId; let frameCount = 0; let lastTime = performance.now();
+
+        // Danh sách các học viên (Dummy players)
+        const dummyPlayers = [
+            { name: "Phan Giang", r: 1, c: 3, color: "#f43f5e", offset: 0 },
+            { name: "H. Thái", r: 3, c: 1, color: "#10b981", offset: Math.PI/2 },
+            { name: "Tuấn B2B", r: 2, c: 4, color: "#f97316", offset: Math.PI },
+            { name: "Minh Tech", r: 0, c: 1, color: "#8b5cf6", offset: Math.PI*1.5 }
+        ];
 
         function initCanvas() {
             const wrapper = canvas.parentElement; cw = wrapper.clientWidth; ch = wrapper.clientHeight;
             const dpr = window.devicePixelRatio || 1; canvas.width = cw * dpr; canvas.height = ch * dpr; ctx.scale(dpr, dpr);
         }
         
-        // Vẽ khối hộp Isometric (Mái, Trái, Phải)
         function drawCartoonBuilding(x, y, w, h, height, roofColor, wallLeft, wallRight) {
-            // Tường trái
             ctx.fillStyle = wallLeft; ctx.beginPath(); ctx.moveTo(x - w, y); ctx.lineTo(x, y + h); ctx.lineTo(x, y + h - height); ctx.lineTo(x - w, y - height); ctx.fill();
-            // Tường phải
             ctx.fillStyle = wallRight; ctx.beginPath(); ctx.moveTo(x, y + h); ctx.lineTo(x + w, y); ctx.lineTo(x + w, y - height); ctx.lineTo(x, y + h - height); ctx.fill();
-            // Mái nhà
             ctx.fillStyle = roofColor; ctx.beginPath(); ctx.moveTo(x, y - height - h); ctx.lineTo(x + w, y - height); ctx.lineTo(x, y - height + h); ctx.lineTo(x - w, y - height); ctx.fill();
         }
 
@@ -795,16 +792,20 @@
         }
 
         // Vẽ Nhân vật hoạt hình 3D (Avatar)
-        function drawCartoonHuman(x, y, colorBody) {
-            // Bóng
+        function drawCartoonHuman(x, y, colorBody, name) {
             ctx.fillStyle = "rgba(0,0,0,0.15)";
             ctx.beginPath(); ctx.ellipse(x, y, 10, 5, 0, 0, Math.PI*2); ctx.fill();
-            // Thân (Bo góc)
+            
+            // Body
             ctx.fillStyle = colorBody;
             ctx.beginPath(); ctx.roundRect(x - 7, y - 18, 14, 18, 5); ctx.fill();
-            // Đầu
-            ctx.fillStyle = "#ffedd5"; // Màu da
+            // Head
+            ctx.fillStyle = "#ffedd5"; // Skin color
             ctx.beginPath(); ctx.arc(x, y - 24, 7, 0, Math.PI*2); ctx.fill();
+            
+            // Name Tag
+            ctx.fillStyle = "#1e293b"; ctx.font = "bold 11px Inter, sans-serif"; ctx.textAlign = "center";
+            ctx.fillText(name, x, y - 38);
         }
         
         function animateCity(currentTime) {
@@ -828,13 +829,12 @@
                 [0,1,0,0,0]
             ];
 
-            // Render Ground First
+            // Render Ground
             for(let r = 0; r < map.length; r++) {
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
                     if(map[r][c] === 1) { 
                         drawIsoGround(x, y, tW, tH, '#cbd5e1'); // Đường sáng
-                        // Vạch kẻ đường
                         ctx.strokeStyle = "white"; ctx.lineWidth = 2; ctx.setLineDash([5, 10]);
                         ctx.beginPath(); ctx.moveTo(x - tW/2, y - tH/2); ctx.lineTo(x + tW/2, y + tH/2); ctx.stroke();
                         ctx.setLineDash([]);
@@ -843,7 +843,7 @@
                 }
             }
 
-            // Render Buildings & Elements on top
+            // Render Buildings
             for(let r = 0; r < map.length; r++) {
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
@@ -856,23 +856,24 @@
                 }
             }
             
-            // Vẽ người dùng chính (Bouncing Human)
+            // Render Dummy Players
+            dummyPlayers.forEach(p => {
+                const px = originX + (p.c - p.r) * tW; 
+                const basePy = originY + (p.c + p.r) * tH;
+                const py = basePy + Math.sin(frameCount * 0.08 + p.offset) * 4; // Nhấp nhô khác nhịp
+                drawCartoonHuman(px, py, p.color, p.name);
+            });
+
+            // Render Main Player
             const uX = originX + (2 - 2) * tW; const baseUy = originY + (2 + 2) * tH;
-            const uY = baseUy + Math.sin(frameCount * 0.1) * 5; // Nảy lên xuống nhẹ nhàng
+            const uY = baseUy + Math.sin(frameCount * 0.1) * 6; // Nảy lên xuống
             
-            drawCartoonHuman(uX, uY, varColor());
+            let myColor = "#3b82f6";
+            if(user.credits >= 10) myColor = "#10b981"; // Đổi màu khi có điểm
             
-            // Tên
-            ctx.fillStyle = "#1e293b"; ctx.font = "bold 13px Inter, sans-serif"; ctx.textAlign = "center";
-            ctx.fillText(user.name, uX, uY - 40);
+            drawCartoonHuman(uX, uY, myColor, user.name + " (Bạn)");
 
             cityFrameId = requestAnimationFrame(animateCity);
-        }
-
-        function varColor() {
-            if(user.credits >= 100) return "#10b981"; // Áo xanh lá
-            if(user.credits >= 50) return "#3b82f6"; // Áo xanh dương
-            return "#f43f5e"; // Áo hồng mặc định
         }
 
         window.addEventListener('resize', () => { if(document.getElementById('world-view').classList.contains('active')) { initCanvas(); } });

@@ -39,15 +39,15 @@
             display: flex; flex-direction: column; padding: 20px 0; z-index: 50; box-shadow: var(--shadow-md);
         }
         
-        /* LOGO UPGRADE */
+        /* LOGO UPGRADE (STARTUP VIBE) */
         .brand { 
             font-size: 1.8rem; font-weight: 900; padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); 
-            color: var(--text-main); letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;
+            color: var(--text-main); letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;
         }
+        .brand svg { filter: drop-shadow(0 3px 5px rgba(249, 115, 22, 0.3)); }
         .brand span { 
-            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
         }
 
         .menu-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 5px; padding: 0 12px; flex: 1;}
@@ -194,12 +194,17 @@
 
     <!-- SIDEBAR -->
     <nav class="sidebar">
-        <!-- LOGO UPGRADE -->
+        <!-- STARTUP LOGO UPGRADE -->
         <div class="brand">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--primary);">
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <defs>
+                    <linearGradient id="logo-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#2563eb" />
+                        <stop offset="100%" stop-color="#f97316" />
+                    </linearGradient>
+                </defs>
+                <path d="M3 21l6-6 4 4 8-12"></path>
+                <path d="M21 7V3h-4"></path>
             </svg>
             Our<span>Path</span>
         </div>
@@ -231,7 +236,7 @@
             <div class="header-controls">
                 <button class="sound-toggle" id="btn-sound" onclick="toggleSound()">🔊 Âm thanh: BẬT</button>
                 
-                <!-- KPI Trigger Zone (Click to open KPI Modal) -->
+                <!-- KPI Trigger Zone -->
                 <div class="user-profile-zone" onmouseenter="uiHover()" onclick="openKPIModal()">
                     <div class="stat-badge">⭐ <span id="hdr-xp">0</span> XP</div>
                     <div class="stat-badge" style="color: var(--success); border-color: #a7f3d0; background: #ecfdf5;">🎓 <span id="hdr-credit">0</span> TÍN</div>
@@ -244,7 +249,7 @@
         <div id="auth-view" class="view-section active">
             <div style="text-align: center; max-width: 850px; margin: 0 auto 40px;">
                 <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
-                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng EdTech ứng dụng AI giúp sinh viên kiến tạo, trực quan hóa và quản lý lộ trình học thuật cá nhân hóa theo mục tiêu học tập và nghề nghiệp.</p>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng EdTech ứng dụng AI giúp người học kiến tạo, trực quan hóa và quản lý lộ trình học thuật cá nhân hóa theo mục tiêu học tập và nghề nghiệp.</p>
             </div>
 
             <div class="card" style="max-width: 500px; margin: 0 auto; border-top: 4px solid var(--secondary);">
@@ -264,6 +269,7 @@
                     </select>
                 </div>
 
+                <!-- Bỏ dòng "Miễn phí" -->
                 <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Bắt đầu Học ngay</button>
             </div>
         </div>
@@ -373,14 +379,13 @@
         </div>
     </div>
 
-    <!-- MODAL 1: ROADMAP DETAILS (LEFT: INFO/LINKS, RIGHT: VIDEO) -->
+    <!-- MODAL 1: ROADMAP DETAILS -->
     <div class="modal-overlay" id="nodeModal">
         <div class="node-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeNodeModal()">✕</div>
             <h2 id="modal-title" style="color: var(--text-main); margin-bottom: 20px; font-size: 1.6rem; font-weight: 900;">Tên Bài Học</h2>
             
             <div class="modal-grid">
-                <!-- Left: Info & External Courses -->
                 <div>
                     <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
                         <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5;" id="modal-desc">Nội dung chi tiết...</p>
@@ -392,15 +397,11 @@
                     </details>
                     
                     <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học Ngoại vi (Đề xuất)</h4>
-                    <div id="modal-courses">
-                        <!-- Render via JS -->
-                    </div>
+                    <div id="modal-courses"></div>
                 </div>
 
-                <!-- Right: Video Player & Action -->
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <video controls style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); background: #000; aspect-ratio: 16/9;">
-                        <!-- Dùng link mp4 test -->
                         <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
                         Trình duyệt không hỗ trợ video.
                     </video>
@@ -504,7 +505,7 @@
     </div>
 
     <script>
-        // --- 1. AUDIO ENGINE (Soft SaaS Sounds) ---
+        // --- 1. AUDIO ENGINE ---
         let audioCtx; let isSoundOn = true;
         function initAudio() { if(!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } if(audioCtx.state === 'suspended') audioCtx.resume(); }
         function playTone(freq, type, duration, vol = 0.05) {
@@ -526,7 +527,7 @@
             else { btn.innerText = "🔇 Âm thanh: TẮT"; btn.classList.add('muted'); }
         }
 
-        // --- 2. LOGIC & DATA (Updated with Real-World Trends) ---
+        // --- 2. LOGIC & DATA ---
         let user = { name: "Khách", xp: 0, credits: 0, level: 1 };
         let activeNodeId = null;
 
@@ -556,7 +557,7 @@
         };
         let currentDiscipline = 'sale';
 
-        // 3D City Setup depending on discipline
+        // 3D City Setup
         const cityStyles = {
             sale: { bg: '#fef3c7', ground: '#fde68a', road: '#d97706', b1: {r:'#f97316', w:'#fff7ed'}, b2: {r:'#ea580c', w:'#ffedd5'} },
             logistics: { bg: '#d1fae5', ground: '#a7f3d0', road: '#059669', b1: {r:'#10b981', w:'#ecfdf5'}, b2: {r:'#059669', w:'#d1fae5'} },
@@ -571,8 +572,8 @@
 
         const cityMaps = {
             sale: [ [2,1,2,0,1], [0,1,2,2,1], [1,1,1,1,1], [2,1,0,2,1], [0,1,0,0,0] ],
-            logistics: [ [0,1,4,4,1], [0,1,4,4,1], [1,1,1,1,1], [4,1,0,0,1], [4,1,0,0,0] ], // 4 = flat warehouse
-            web: [ [0,1,3,0,1], [3,1,0,3,1], [1,1,1,1,1], [0,1,3,0,1], [0,1,0,0,0] ] // 3 = tall tower
+            logistics: [ [0,1,4,4,1], [0,1,4,4,1], [1,1,1,1,1], [4,1,0,0,1], [4,1,0,0,0] ], 
+            web: [ [0,1,3,0,1], [3,1,0,3,1], [1,1,1,1,1], [0,1,3,0,1], [0,1,0,0,0] ] 
         };
 
         function navTo(viewId, menuEl) {
@@ -595,7 +596,6 @@
             document.getElementById('tour-my-name').innerText = user.name;
             document.getElementById('hdr-name').style.color = "var(--primary)";
             
-            // Toggle Menus
             document.getElementById('menu-road').style.display = "flex";
             document.getElementById('menu-world').style.display = "flex";
             document.getElementById('menu-forum').style.display = "flex";
@@ -604,7 +604,6 @@
             document.getElementById('hdr-discipline').style.display = "flex";
             document.getElementById('menu-auth').style.display = "none";
 
-            // Set chosen major
             const chosenMajor = document.getElementById('survey-major').value;
             document.getElementById('discipline-select').value = chosenMajor;
             currentDiscipline = chosenMajor;
@@ -723,7 +722,6 @@
             });
         }
 
-        // --- MODAL 1: ROADMAP DETAILS ---
         function openNodeModal(node, isCompleted) {
             activeNodeId = node.id;
             document.getElementById('modal-title').innerText = node.title;
@@ -733,7 +731,6 @@
             const detailsElement = document.getElementById('modal-syllabus').parentElement;
             detailsElement.removeAttribute('open');
             
-            // External courses
             const courseContainer = document.getElementById('modal-courses');
             courseContainer.innerHTML = '';
             if(node.courses && node.courses.length > 0) {
@@ -758,7 +755,7 @@
         }
         function closeNodeModal() { document.getElementById('nodeModal').classList.remove('show'); }
 
-        // --- MODAL 2: KPI DASHBOARD ---
+        // --- KPI DASHBOARD MODAL ---
         function openKPIModal() { 
             if(user.name === "Khách") return; 
             uiClick(); document.getElementById('kpiModal').classList.add('show'); 
@@ -819,7 +816,7 @@
             }
         }
 
-        // --- CARTOON CITY 3D (Discipline specific) ---
+        // --- CARTOON CITY 3D ---
         const canvas = document.getElementById('cityCanvas'); const ctx = canvas.getContext('2d');
         let cw, ch; let cityFrameId; let frameCount = 0; let lastTime = performance.now();
 
@@ -842,11 +839,8 @@
         function drawCartoonHuman(x, y, colorBody, name) {
             ctx.fillStyle = "rgba(0,0,0,0.15)";
             ctx.beginPath(); ctx.ellipse(x, y, 10, 5, 0, 0, Math.PI*2); ctx.fill();
-            // Body
             ctx.fillStyle = colorBody; ctx.beginPath(); ctx.roundRect(x - 7, y - 18, 14, 18, 5); ctx.fill();
-            // Head
             ctx.fillStyle = "#ffedd5"; ctx.beginPath(); ctx.arc(x, y - 24, 7, 0, Math.PI*2); ctx.fill();
-            // Name Tag
             ctx.fillStyle = "#1e293b"; ctx.font = "bold 11px Inter, sans-serif"; ctx.textAlign = "center";
             ctx.fillText(name, x, y - 38);
         }
@@ -862,7 +856,6 @@
             const map = cityMaps[currentDiscipline] || cityMaps.web;
             const players = dummyPlayersData[currentDiscipline] || dummyPlayersData.web;
 
-            // Render Ground
             for(let r = 0; r < map.length; r++) {
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
@@ -876,23 +869,15 @@
                 }
             }
 
-            // Render Buildings
             for(let r = 0; r < map.length; r++) {
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
-                    if(map[r][c] === 2) { 
-                        drawCartoonBuilding(x, y, tW-5, tH-2, 40, style.b1.r, style.b1.w, style.b2.w); 
-                    }
-                    else if(map[r][c] === 3) { 
-                        drawCartoonBuilding(x, y, tW-5, tH-2, 70, style.b2.r, style.b2.w, style.b1.w); 
-                    }
-                    else if(map[r][c] === 4) { // Kho bãi thấp
-                        drawCartoonBuilding(x, y, tW-2, tH-1, 20, style.b1.r, style.b1.w, style.b2.w); 
-                    }
+                    if(map[r][c] === 2) { drawCartoonBuilding(x, y, tW-5, tH-2, 40, style.b1.r, style.b1.w, style.b2.w); }
+                    else if(map[r][c] === 3) { drawCartoonBuilding(x, y, tW-5, tH-2, 70, style.b2.r, style.b2.w, style.b1.w); }
+                    else if(map[r][c] === 4) { drawCartoonBuilding(x, y, tW-2, tH-1, 20, style.b1.r, style.b1.w, style.b2.w); }
                 }
             }
             
-            // Render Dummy Players
             players.forEach(p => {
                 const px = originX + (p.c - p.r) * tW; 
                 const basePy = originY + (p.c + p.r) * tH;
@@ -900,7 +885,6 @@
                 drawCartoonHuman(px, py, p.color, p.name);
             });
 
-            // Render Main Player
             const uX = originX + (2 - 2) * tW; const baseUy = originY + (2 + 2) * tH;
             const uY = baseUy + Math.sin(frameCount * 0.1) * 6; 
             

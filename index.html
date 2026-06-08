@@ -13,7 +13,7 @@
             --text-muted: #64748b;
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
-            --secondary: #f97316; /* Orange CTA */
+            --secondary: #f97316;
             --secondary-hover: #ea580c;
             --success: #10b981;
             --locked: #ef4444;
@@ -59,7 +59,11 @@
         .sound-toggle.muted { background: #fef2f2; color: var(--locked); border-color: #fecaca; }
         .discipline-switcher { display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 8px 15px; border-radius: 20px; border: 1px solid var(--border-color);}
         .discipline-switcher select { background: transparent; color: var(--text-main); border: none; outline: none; font-weight: 700; cursor: pointer;}
-        .stat-badge { background: #fffbeb; padding: 8px 15px; border-radius: 20px; border: 1px solid #fde68a; font-size: 0.95rem; font-weight: 700; color: #d97706;}
+        
+        /* KPI Trigger Zone */
+        .user-profile-zone { display: flex; align-items: center; gap: 12px; padding: 6px 12px; border-radius: 30px; cursor: pointer; transition: 0.2s; border: 1px solid transparent;}
+        .user-profile-zone:hover { background: #f1f5f9; border-color: var(--border-color); }
+        .stat-badge { background: #fffbeb; padding: 6px 12px; border-radius: 20px; border: 1px solid #fde68a; font-size: 0.9rem; font-weight: 700; color: #d97706;}
         
         /* --- VIEW MANAGEMENT --- */
         .view-section { display: none; padding: 40px; height: calc(100vh - 75px); overflow-y: auto; animation: fadeInUp 0.4s ease; }
@@ -79,28 +83,14 @@
         .input-group input, .input-group select { width: 100%; padding: 14px; background: #f8fafc; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; outline: none; transition: 0.2s; font-size: 1rem;}
         .input-group input:focus, .input-group select:focus { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
 
-        /* EXPANDABLE DETAILS */
-        details { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px; overflow: hidden; transition: 0.3s;}
-        summary { padding: 18px; cursor: pointer; font-weight: 700; color: var(--text-main); outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;}
-        summary::-webkit-details-marker { display: none; }
-        summary:hover { background: #f1f5f9; }
-        details[open] summary { border-bottom: 1px solid var(--border-color); color: var(--primary); background: #eff6ff;}
-        .details-content { padding: 20px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; background: #fff;}
-        .dl-btn { display: inline-flex; align-items: center; justify-content: center; margin-top: 10px; padding: 10px 20px; background: #ecfdf5; color: var(--success); text-decoration: none; border: 1px solid #a7f3d0; border-radius: 8px; font-weight: 600; transition: 0.2s; width: 100%;}
-        .dl-btn:hover { background: var(--success); color: white; }
-
         /* --- MODERN ROADMAP --- */
         .roadmap-wrapper {
             width: 100%; max-width: 1200px; margin: 0 auto; aspect-ratio: 16/9;
             background: #ffffff; border: 1px solid var(--border-color); border-radius: 20px; position: relative; overflow: hidden; box-shadow: var(--shadow-lg);
         }
-        .roadmap-wrapper::before {
-            content: ""; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px; opacity: 0.5; pointer-events: none;
-        }
+        .roadmap-wrapper::before { content: ""; position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 30px 30px; opacity: 0.5; pointer-events: none;}
         .progress-bar-container { position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: #f1f5f9; z-index: 5;}
         .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0 4px 4px 0;}
-
         .roadmap-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         @keyframes flowDataLight { to { stroke-dashoffset: -24; } }
         
@@ -113,14 +103,13 @@
         .matrix-node.completed { border-color: var(--success); background: #ecfdf5; box-shadow: 0 4px 10px rgba(16,185,129,0.1); }
         .matrix-node.locked { border-color: #cbd5e1; background: #f8fafc; cursor: not-allowed; opacity: 0.8; box-shadow: none;}
         .matrix-node.locked:hover { transform: translate(-50%, -50%); }
-        
         .m-title { font-weight: 800; font-size: 1.05rem; color: var(--primary); text-align: center;}
         .matrix-node.completed .m-title { color: var(--success); }
         .matrix-node.locked .m-title { color: var(--text-muted); }
 
         /* --- CARTOON CITY (ANIMATED 3D) --- */
         .world-layout { display: flex; height: calc(100vh - 155px); gap: 20px; }
-        .canvas-wrapper { flex: 1; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); background: #bae6fd;}
+        .canvas-wrapper { flex: 1; position: relative; border-radius: 16px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); background: #bae6fd; transition: background 0.5s;}
         canvas { display: block; width: 100%; height: 100%; }
         .city-hud { position: absolute; top: 20px; left: 20px; background: rgba(255, 255, 255, 0.9); padding: 12px 20px; border-radius: 12px; box-shadow: var(--shadow-sm); font-weight: 600; color: var(--text-main); backdrop-filter: blur(5px);}
         
@@ -130,27 +119,22 @@
         .w-msg { font-size: 0.95rem; line-height: 1.5; animation: slideIn 0.3s ease; background: white; padding: 12px; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); border-left: 4px solid var(--primary);}
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .chat-input-area { padding: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 10px; background: white;}
-        .chat-input-area input { flex: 1; background: #f1f5f9; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; color: var(--text-main); outline: none; transition: 0.2s;}
+        .chat-input-area input { flex: 1; background: #f1f5f9; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; color: var(--text-main); outline: none;}
         .chat-input-area input:focus { border-color: var(--primary); background: white;}
 
-        /* --- TOURNAMENT & KPI VIEW --- */
-        .tour-kpi-layout { display: flex; flex-direction: column; gap: 40px; }
+        /* --- TOURNAMENT --- */
         .leaderboard-list { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;}
         .lb-item { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: white; padding: 30px 20px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); transition: 0.3s; position: relative; overflow: hidden;}
         .lb-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
         .lb-item::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 6px; }
-        .lb-item.gold::before { background: var(--gold); }
-        .lb-item.silver::before { background: var(--silver); }
+        .lb-item.gold::before { background: #ffd700; }
+        .lb-item.silver::before { background: #c0c0c0; }
         .lb-item.bronze::before { background: var(--primary); }
-        
-        .dash-top-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .radar-container { display: flex; justify-content: center; align-items: center; height: 300px; position: relative;}
-        .radar-svg { width: 100%; height: 100%; overflow: visible; }
 
         /* --- CHATBOT WIDGET --- */
         .chatbot-widget {
             position: fixed; bottom: 20px; right: 20px; width: 380px; background: white; border-radius: 16px; border: 1px solid var(--border-color);
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); display: flex; flex-direction: column; transform: translateY(120%); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); display: flex; flex-direction: column; transform: translateY(120%); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000;
         }
         .chatbot-widget.open { transform: translateY(0); }
         .chat-header { background: var(--primary); padding: 18px; border-radius: 16px 16px 0 0; display: flex; justify-content: space-between; font-weight: 700; color: white; cursor: pointer;}
@@ -159,23 +143,40 @@
         .msg.bot { background: white; align-self: flex-start; color: var(--text-main); border: 1px solid var(--border-color); border-bottom-left-radius: 4px;}
         .msg.user { background: var(--primary); align-self: flex-end; color: white; border-bottom-right-radius: 4px;}
         .chat-input { display: flex; padding: 15px; border-top: 1px solid var(--border-color); background: white; border-radius: 0 0 16px 16px;}
-        .chat-input input { flex: 1; background: #f1f5f9; border: 1px solid transparent; padding: 12px 15px; border-radius: 20px; color: var(--text-main); outline: none; transition: 0.2s;}
+        .chat-input input { flex: 1; background: #f1f5f9; border: 1px solid transparent; padding: 12px 15px; border-radius: 20px; color: var(--text-main); outline: none;}
         .chat-input input:focus { border-color: var(--primary); background: white;}
-        
         .chat-toggle-btn {
             position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; background: var(--secondary); border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            font-size: 1.8rem; color: white; cursor: pointer; box-shadow: 0 10px 15px rgba(249,115,22,0.3); z-index: 999; transition: 0.3s;
+            color: white; cursor: pointer; box-shadow: 0 10px 15px rgba(249,115,22,0.3); z-index: 999; transition: 0.3s;
         }
         .chat-toggle-btn:hover { transform: scale(1.1) rotate(10deg); background: var(--secondary-hover);}
 
-        /* Modal Overlay */
-        .node-modal-overlay {
+        /* --- MODALS OVERLAY --- */
+        .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px);
             display: none; justify-content: center; align-items: center; z-index: 200; opacity: 0; transition: 0.3s;
         }
-        .node-modal-overlay.show { opacity: 1; display: flex; }
-        .node-modal { background: white; width: 650px; max-height: 90vh; overflow-y: auto; border-radius: 20px; padding: 40px; position: relative; transform: scale(0.95); transition: 0.3s; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);}
-        .node-modal-overlay.show .node-modal { transform: scale(1); }
+        .modal-overlay.show { opacity: 1; display: flex; }
+        
+        /* 1. Roadmap Details Modal */
+        .node-modal { background: white; width: 850px; max-height: 90vh; overflow-y: auto; border-radius: 20px; padding: 30px; position: relative; transform: scale(0.95); transition: 0.3s; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);}
+        .modal-overlay.show .node-modal { transform: scale(1); }
+        .close-modal { position: absolute; top: 20px; right: 20px; cursor: pointer; color: var(--text-muted); font-size: 1.5rem; font-weight: bold; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #f1f5f9; transition: 0.2s;}
+        .close-modal:hover { background: #e2e8f0; color: var(--locked); }
+        
+        .modal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 15px; }
+        details { background: #f8fafc; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 12px; }
+        summary { padding: 15px; cursor: pointer; font-weight: 700; color: var(--text-main); outline: none; }
+        .details-content { padding: 15px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; border-top: 1px solid var(--border-color);}
+        .course-link { display: flex; align-items: center; gap: 10px; background: #eff6ff; border: 1px solid #bfdbfe; padding: 12px; border-radius: 8px; color: var(--primary); text-decoration: none; font-weight: 600; margin-top: 10px; transition: 0.2s;}
+        .course-link:hover { background: #dbeafe; }
+
+        /* 2. KPI / Radar Dashboard Modal */
+        .kpi-modal { background: white; width: 900px; max-height: 90vh; overflow-y: auto; border-radius: 20px; padding: 35px; position: relative; transform: scale(0.95); transition: 0.3s; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);}
+        .modal-overlay.show .kpi-modal { transform: scale(1); }
+        .kpi-top-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 25px; }
+        .radar-container { display: flex; justify-content: center; align-items: center; height: 300px; }
+        .radar-svg { width: 100%; height: 100%; overflow: visible; }
 
     </style>
 </head>
@@ -188,8 +189,8 @@
             <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Khởi tạo Hồ sơ</li>
             <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Đào tạo</li>
             <li class="menu-item" style="display: none;" id="menu-world" onmouseenter="uiHover()" onclick="navTo('world-view', this)">🏙️ OurPath City</li>
-            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 The Hub (Forum)</li>
-            <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-kpi-view', this)">🏆 Giải đấu & KPI</li>
+            <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 Thảo luận Cộng đồng</li>
+            <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-view', this)">🏆 Giải đấu Vinh danh</li>
             
             <li class="menu-item logout-btn" style="display: none;" id="menu-logout" onmouseenter="uiHover()" onclick="handleLogout()">🚪 Đăng xuất</li>
         </ul>
@@ -200,27 +201,31 @@
         <header>
             <div class="header-controls">
                 <div class="discipline-switcher" id="hdr-discipline" style="display: none;">
-                    <span style="color: var(--text-muted); font-weight: 600;">Nhánh học:</span>
+                    <span style="color: var(--text-muted); font-weight: 600;">Ngành học:</span>
                     <select id="discipline-select" onchange="uiClick(); switchDiscipline();">
                         <option value="sale">Kinh doanh & Bán hàng B2B</option>
-                        <option value="logistics">Logistics & Chuỗi cung ứng</option>
+                        <option value="logistics">Logistics & Kho vận</option>
                         <option value="web">Công nghệ (Web Frontend)</option>
                     </select>
                 </div>
             </div>
             <div class="header-controls">
                 <button class="sound-toggle" id="btn-sound" onclick="toggleSound()">🔊 Âm thanh: BẬT</button>
-                <div class="stat-badge">⭐ <span id="hdr-xp">0</span> XP</div>
-                <div class="stat-badge" style="color: var(--success); border-color: #a7f3d0; background: #ecfdf5;">🎓 <span id="hdr-credit">0</span> TÍN CHỈ</div>
-                <span id="hdr-name" style="font-weight: 800; font-size: 1.1rem; color: var(--text-muted);">Khách</span>
+                
+                <!-- KPI Trigger Zone (Click to open KPI Modal) -->
+                <div class="user-profile-zone" onmouseenter="uiHover()" onclick="openKPIModal()">
+                    <div class="stat-badge">⭐ <span id="hdr-xp">0</span> XP</div>
+                    <div class="stat-badge" style="color: var(--success); border-color: #a7f3d0; background: #ecfdf5;">🎓 <span id="hdr-credit">0</span> TÍN</div>
+                    <span id="hdr-name" style="font-weight: 800; font-size: 1.1rem; color: var(--text-muted);">Khách</span>
+                </div>
             </div>
         </header>
 
-        <!-- 1. AUTH & SALES LANDING VIEW -->
+        <!-- 1. AUTH & LANDING VIEW -->
         <div id="auth-view" class="view-section active">
             <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
-                <h1 style="font-size: 3rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Mở khóa Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
-                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng đào tạo thực chiến tập trung vào các nhóm ngành khát nhân sự: Sales B2B, Logistics, và Công nghệ Frontend. Học qua dự án, kết nối cộng đồng.</p>
+                <h1 style="font-size: 3rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng đào tạo thực chiến tập trung vào các nhóm ngành khát nhân sự: Sales B2B, Logistics, và Công nghệ. Học qua dự án, tương tác với Mentor.</p>
             </div>
 
             <div class="card" style="max-width: 500px; margin: 0 auto; border-top: 4px solid var(--secondary);">
@@ -228,7 +233,7 @@
                 
                 <div class="input-group">
                     <label>Họ và tên của bạn</label>
-                    <input type="text" id="login-name" value="Nguyễn Minh Quang" placeholder="Nhập tên của bạn...">
+                    <input type="text" id="login-name" value="Nguyễn Văn A" placeholder="Nhập tên của bạn...">
                 </div>
                 
                 <div class="input-group">
@@ -240,8 +245,7 @@
                     </select>
                 </div>
 
-                <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Khởi tạo Lộ trình (Miễn phí)</button>
-                <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">* Bằng cách nhấp vào nút trên, hệ thống AI sẽ thiết lập lộ trình học tối ưu dành riêng cho bạn.</p>
+                <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Bắt đầu Học ngay (Miễn phí)</button>
             </div>
         </div>
 
@@ -249,11 +253,11 @@
         <div id="roadmap-view" class="view-section">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
                 <div>
-                    <h2 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Bản đồ Tri thức Đa nhánh</h2>
-                    <p style="color: var(--text-muted); font-size: 1rem;">Mở khóa từng chặng kiến thức. Click vào Node để tải tài liệu và thực hành.</p>
+                    <h2 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Lộ trình Đào tạo Thực chiến</h2>
+                    <p style="color: var(--text-muted); font-size: 1rem;">Mở khóa từng chặng kiến thức. Click vào thẻ học phần để xem Video bài giảng và Tải tài liệu.</p>
                 </div>
                 <div style="background: white; padding: 10px 20px; border-radius: 30px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); font-weight: 700;">
-                    Tiến độ hoàn thành: <span id="rm-percent-text" style="color: var(--primary);">0%</span>
+                    Tiến độ: <span id="rm-percent-text" style="color: var(--primary);">0%</span>
                 </div>
             </div>
             <div class="roadmap-wrapper" id="roadmap-container">
@@ -264,18 +268,18 @@
 
         <!-- 3. CARTOON CITY MMO VIEW -->
         <div id="world-view" class="view-section">
-            <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus (3D Hoạt hình)</h2>
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus</h2>
             <div class="world-layout">
-                <div class="canvas-wrapper">
+                <div class="canvas-wrapper" id="canvas-bg">
                     <canvas id="cityCanvas"></canvas>
                     <div class="city-hud">
-                        <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; font-weight: 800;">Khuôn viên Học tập Thực tế ảo</div>
+                        <div style="color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; font-weight: 800;">Khuôn viên Thực tế ảo</div>
                         <div style="color: var(--text-muted); font-size: 0.9rem;">Học viên đang online: <strong style="color: var(--success)">1,402</strong></div>
                     </div>
                 </div>
                 
                 <div class="world-chat-panel">
-                    <div class="chat-title">Kênh Chat Toàn Máy Chủ</div>
+                    <div class="chat-title">Cộng đồng Sinh viên</div>
                     <div class="world-messages" id="world-chat-box"></div>
                     <div class="chat-input-area">
                         <input type="text" id="world-chat-input" placeholder="Trò chuyện cùng mọi người..." onkeypress="handleWorldChat(event)">
@@ -288,7 +292,7 @@
         <!-- 4. FORUM VIEW -->
         <div id="forum-view" class="view-section">
             <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
-                <h2 style="font-size: 2rem;">Thảo luận Cộng đồng</h2>
+                <h2 style="font-size: 2rem;">Thảo luận Chuyên môn</h2>
                 <button class="btn" onmouseenter="uiHover()" onclick="uiClick()">+ Tạo bài viết mới</button>
             </div>
             
@@ -299,13 +303,11 @@
                         <h3 style="margin: 12px 0 8px 0; font-size: 1.3rem;">Cách vượt qua vòng "Giữ cửa" (Gatekeeper) khi gọi Cold Call?</h3>
                         <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">Đăng bởi: Mentor Tuấn B2B - 1 giờ trước</p>
                     </div>
-                    <div style="color: var(--primary);">Xem thảo luận ▼</div>
                 </summary>
                 <div class="details-content">
-                    <p>Chào các bạn học viên nhánh Sales. Nhiều bạn gặp khó khi bị lễ tân chặn cuộc gọi không cho gặp Giám đốc mua hàng. Mình xin chia sẻ kịch bản (script) để vượt qua bước này nhẹ nhàng.</p>
-                    <a href="#" class="dl-btn" style="margin-top: 15px;" onclick="uiClick()">📥 Tải Script Gọi điện (PDF)</a>
+                    <p>Nhiều bạn gặp khó khi bị lễ tân chặn cuộc gọi không cho gặp Giám đốc mua hàng. Mình xin chia sẻ kịch bản (script) để vượt qua bước này nhẹ nhàng.</p>
                     <div style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 3px solid var(--primary);">
-                        <strong style="color: var(--primary)">Học viên Minh:</strong> Cảm ơn Mentor, kịch bản tạo sự tò mò cho lễ tân rất hay ạ!
+                        <strong style="color: var(--primary)">Học viên B:</strong> Cảm ơn Mentor, kịch bản tạo sự tò mò cho lễ tân rất hay ạ!
                     </div>
                 </div>
             </details>
@@ -314,161 +316,166 @@
                 <summary onmouseenter="uiHover()" onclick="uiClick()" style="padding: 25px;">
                     <div>
                         <span style="background: #dcfce7; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; color: #059669; margin-right: 8px; font-weight: 700;">#Logistics</span>
-                        <h3 style="margin: 12px 0 8px 0; font-size: 1.3rem;">Mô hình JIT (Just-In-Time) có còn hiệu quả sau đứt gãy chuỗi cung ứng?</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">Đăng bởi: Chuyên gia Kho Vận - 3 giờ trước</p>
+                        <h3 style="margin: 12px 0 8px 0; font-size: 1.3rem;">Mô hình JIT (Just-In-Time) có còn hiệu quả?</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">Đăng bởi: Chuyên gia Logistics - 3 giờ trước</p>
                     </div>
-                    <div style="color: var(--primary);">Xem thảo luận ▼</div>
                 </summary>
                 <div class="details-content">
-                    <p>Chúng ta cùng thảo luận về rủi ro của JIT khi xảy ra biến động toàn cầu. Mọi người nghĩ tồn kho an toàn (Safety Stock) nên tăng lên bao nhiêu %?</p>
+                    <p>Chúng ta cùng thảo luận về rủi ro của JIT khi xảy ra biến động toàn cầu. Tồn kho an toàn (Safety Stock) nên tăng lên bao nhiêu %?</p>
                 </div>
             </details>
         </div>
 
-        <!-- 5. TOURNAMENT & KPI VIEW -->
-        <div id="tour-kpi-view" class="view-section">
-            <div class="tour-kpi-layout">
-                <!-- Phần Tournament (Đưa lên trên) -->
+        <!-- 5. TOURNAMENT VIEW -->
+        <div id="tour-view" class="view-section">
+            <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh lành mạnh dựa trên số Tín chỉ tích lũy được.</p>
+            
+            <ul class="leaderboard-list">
+                <li class="lb-item gold" onmouseenter="uiHover()">
+                    <span style="font-size: 3rem; margin-bottom: 15px;">🏆</span>
+                    <strong style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">#1. Lê Phương Thảo</strong>
+                    <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Best Seller B2B</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #d97706;">350 TÍN</div>
+                </li>
+                <li class="lb-item silver" onmouseenter="uiHover()">
+                    <span style="font-size: 3rem; margin-bottom: 15px;">🥈</span>
+                    <strong style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">#2. Hoàng Văn Thái</strong>
+                    <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Logistics & SCM</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: #475569;">290 TÍN</div>
+                </li>
+                <li class="lb-item bronze" style="border: 2px solid var(--primary);" onmouseenter="uiHover()">
+                    <span style="font-size: 3rem; margin-bottom: 15px;">🌟</span>
+                    <strong style="font-size: 1.2rem; color: var(--primary); margin-bottom: 5px;">#3. <span id="tour-my-name">Nguyễn Văn A</span> (Bạn)</strong>
+                    <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Tân binh tiềm năng</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary);"><span id="tour-my-credit">0</span> TÍN</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- MODAL 1: ROADMAP DETAILS (LEFT: INFO/LINKS, RIGHT: VIDEO) -->
+    <div class="modal-overlay" id="nodeModal">
+        <div class="node-modal">
+            <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeNodeModal()">✕</div>
+            <h2 id="modal-title" style="color: var(--text-main); margin-bottom: 20px; font-size: 1.6rem; font-weight: 900;">Tên Bài Học</h2>
+            
+            <div class="modal-grid">
+                <!-- Left: Info & External Courses -->
                 <div>
-                    <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh (Tournament)</h2>
-                    <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh thi đua dựa trên số Tín chỉ tích lũy được trong các học phần.</p>
+                    <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="font-size: 0.95rem; color: var(--text-main); line-height: 1.5;" id="modal-desc">Nội dung chi tiết...</p>
+                    </div>
                     
-                    <ul class="leaderboard-list">
-                        <li class="lb-item gold" onmouseenter="uiHover()">
-                            <span style="font-size: 3rem; margin-bottom: 15px;">🏆</span>
-                            <strong style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">#1. Lê Phương Thảo</strong>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Best Seller B2B</div>
-                            <div style="font-size: 1.5rem; font-weight: 900; color: #d97706;">350 TÍN</div>
-                        </li>
-                        <li class="lb-item silver" onmouseenter="uiHover()">
-                            <span style="font-size: 3rem; margin-bottom: 15px;">🥈</span>
-                            <strong style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 5px;">#2. Hoàng Văn Thái</strong>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Logistics Master</div>
-                            <div style="font-size: 1.5rem; font-weight: 900; color: #475569;">290 TÍN</div>
-                        </li>
-                        <li class="lb-item bronze" style="border: 2px solid var(--primary);" onmouseenter="uiHover()">
-                            <span style="font-size: 3rem; margin-bottom: 15px;">🌟</span>
-                            <strong style="font-size: 1.2rem; color: var(--primary); margin-bottom: 5px;">#3. <span id="tour-my-name">GUEST</span> (Bạn)</strong>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Tân binh tiềm năng</div>
-                            <div style="font-size: 1.5rem; font-weight: 900; color: var(--primary);"><span id="tour-my-credit">0</span> TÍN</div>
-                        </li>
-                    </ul>
+                    <details>
+                        <summary onmouseenter="uiHover()" onclick="uiClick()">Đề cương chi tiết ▼</summary>
+                        <div class="details-content" id="modal-syllabus">Nội dung...</div>
+                    </details>
+                    
+                    <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học Ngoại vi (Đề xuất)</h4>
+                    <div id="modal-courses">
+                        <!-- Render via JS -->
+                    </div>
                 </div>
 
-                <hr style="border: none; border-top: 1px dashed var(--border-color); margin: 20px 0;">
-
-                <!-- Phần KPI Dashboard (Đưa xuống dưới) -->
-                <div>
-                    <h2 style="font-size: 2rem; margin-bottom: 25px;">Đánh giá Năng lực (KPI Dashboard)</h2>
+                <!-- Right: Video Player & Action -->
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <video controls style="width: 100%; border-radius: 8px; border: 1px solid var(--border-color); background: #000; aspect-ratio: 16/9;">
+                        <!-- Dùng link mp4 test -->
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Trình duyệt không hỗ trợ video.
+                    </video>
                     
-                    <div class="dash-top-grid">
-                        <div class="card" style="text-align: center;">
-                            <h3 style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase;">Điểm Kinh Nghiệm</h3>
-                            <h1 style="font-size: 2.5rem; color: var(--primary); margin-top: 10px;" id="dash-xp">0</h1>
-                        </div>
-                        <div class="card" style="text-align: center;">
-                            <h3 style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase;">Tín Chỉ Thu Thập</h3>
-                            <h1 style="font-size: 2.5rem; color: var(--success); margin-top: 10px;" id="dash-credit">0</h1>
-                        </div>
-                        <div class="card" style="text-align: center;">
-                            <h3 style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase;">Cấp Độ Học Viên</h3>
-                            <h1 style="font-size: 2.5rem; color: var(--secondary); margin-top: 10px;">Lv.<span id="dash-level">1</span></h1>
-                        </div>
-                        <div class="card" style="text-align: center;">
-                            <h3 style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase;">Tỷ Lệ Hoàn Thành</h3>
-                            <h1 style="font-size: 2.5rem; color: #8b5cf6; margin-top: 10px;" id="dash-percent">0%</h1>
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-                        <!-- Radar Chart -->
-                        <div class="card">
-                            <h3 style="text-align: center; color: var(--primary); margin-bottom: 20px;">Phân tích Kỹ năng Đa nhiệm</h3>
-                            <div class="radar-container">
-                                <svg class="radar-svg" viewBox="0 0 200 200">
-                                    <polygon points="100,20 180,60 180,140 100,180 20,140 20,60" fill="none" stroke="#e2e8f0" stroke-width="1"/>
-                                    <polygon points="100,60 140,80 140,120 100,140 60,120 60,80" fill="none" stroke="#e2e8f0" stroke-width="1"/>
-                                    <line x1="100" y1="100" x2="100" y2="20" stroke="#e2e8f0"/>
-                                    <line x1="100" y1="100" x2="180" y2="60" stroke="#e2e8f0"/>
-                                    <line x1="100" y1="100" x2="180" y2="140" stroke="#e2e8f0"/>
-                                    <line x1="100" y1="100" x2="100" y2="180" stroke="#e2e8f0"/>
-                                    <line x1="100" y1="100" x2="20" y2="140" stroke="#e2e8f0"/>
-                                    <line x1="100" y1="100" x2="20" y2="60" stroke="#e2e8f0"/>
-                                    
-                                    <polygon id="skill-poly" points="100,60 130,75 160,130 100,150 40,130 70,75" fill="rgba(37, 99, 235, 0.2)" stroke="var(--primary)" stroke-width="2"/>
-                                    
-                                    <text x="100" y="12" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">Giao tiếp / Sales</text>
-                                    <text x="185" y="60" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Tâm lý học</text>
-                                    <text x="185" y="145" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Quản trị Kho</text>
-                                    <text x="100" y="195" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">Tech / Frontend</text>
-                                    <text x="15" y="145" fill="#475569" font-size="10" font-weight="bold" text-anchor="end">Logic / Data</text>
-                                    <text x="15" y="60" fill="#475569" font-size="10" font-weight="bold" text-anchor="end">Đàm phán</text>
-                                </svg>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <h3 style="color: var(--primary); margin-bottom: 20px;">Hoạt động Gần đây</h3>
-                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px;">
-                                <li style="padding-bottom: 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between;">
-                                    <span>[Đào tạo] Đã hoàn thành học phần chuyên ngành</span>
-                                    <strong style="color: var(--success)">+10 Tín</strong>
-                                </li>
-                                <li style="padding-bottom: 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between;">
-                                    <span>[Cộng đồng] Thảo luận sôi nổi tại The Hub</span>
-                                    <strong style="color: var(--primary)">+50 XP</strong>
-                                </li>
-                                <li style="display: flex; justify-content: space-between;">
-                                    <span>[Hệ thống] Định danh hồ sơ thành công</span>
-                                    <strong style="color: var(--success)">+5 Tín</strong>
-                                </li>
-                            </ul>
-                        </div>
+                    <div style="flex: 1; border: 1px dashed var(--border-color); border-radius: 8px; padding: 15px; text-align: center; background: #fafafa;">
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Xem kỹ video và tài liệu trước khi xác nhận hoàn thành học phần.</p>
+                        <button class="btn" id="modal-complete-btn" style="width: 100%; font-size: 1rem;" onmouseenter="uiHover()"></button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ROADMAP MODAL: CLICK-TO-EXPAND & DOWNLOAD -->
-    <div class="node-modal-overlay" id="nodeModal">
-        <div class="node-modal">
-            <div style="position: absolute; top: 25px; right: 25px; cursor: pointer; color: var(--text-muted); font-size: 1.5rem; font-weight: bold;" onmouseenter="uiHover()" onclick="uiClick(); closeModal()">✕</div>
-            <h2 id="modal-title" style="color: var(--text-main); margin-bottom: 15px; font-size: 1.8rem; font-weight: 900;">Tên Bài Học</h2>
+    <!-- MODAL 2: KPI / RADAR DASHBOARD -->
+    <div class="modal-overlay" id="kpiModal">
+        <div class="kpi-modal">
+            <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeKPIModal()">✕</div>
+            <h2 style="font-size: 1.8rem; margin-bottom: 25px; color: var(--primary);">Đánh giá Năng lực (KPI Dashboard)</h2>
             
-            <div style="background: #f8fafc; border: 1px solid var(--border-color); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
-                <p style="font-size: 1.05rem; color: var(--text-main); line-height: 1.6;" id="modal-desc">Nội dung chi tiết...</p>
-            </div>
-            
-            <details style="margin-bottom: 25px;">
-                <summary onmouseenter="uiHover()" onclick="uiClick()">Xem Đề cương / Case Study Thực tế ▼</summary>
-                <div class="details-content" id="modal-syllabus" style="font-size: 1rem;">
-                    Nội dung...
+            <div class="kpi-top-grid">
+                <div class="card" style="text-align: center; padding: 15px;">
+                    <h3 style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">Kinh Nghiệm</h3>
+                    <h1 style="font-size: 2rem; color: var(--primary); margin-top: 5px;" id="dash-xp">0</h1>
                 </div>
-            </details>
-
-            <div style="display: flex; gap: 15px; margin-bottom: 30px;">
-                <a href="#" class="btn" style="flex: 1; text-align: center; background: white; color: var(--primary); border: 2px solid var(--primary);" onmouseenter="uiHover()" onclick="uiClick()">📄 Tải Bài giảng (PDF)</a>
-                <a href="#" class="btn btn-cta" style="flex: 1; text-align: center;" onmouseenter="uiHover()" onclick="uiClick()">📥 Tải Source / Biểu mẫu (ZIP)</a>
+                <div class="card" style="text-align: center; padding: 15px;">
+                    <h3 style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">Tín Chỉ</h3>
+                    <h1 style="font-size: 2rem; color: var(--success); margin-top: 5px;" id="dash-credit">0</h1>
+                </div>
+                <div class="card" style="text-align: center; padding: 15px;">
+                    <h3 style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">Cấp Độ</h3>
+                    <h1 style="font-size: 2rem; color: var(--secondary); margin-top: 5px;">Lv.<span id="dash-level">1</span></h1>
+                </div>
+                <div class="card" style="text-align: center; padding: 15px;">
+                    <h3 style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">Hoàn Thành</h3>
+                    <h1 style="font-size: 2rem; color: #8b5cf6; margin-top: 5px;" id="dash-percent">0%</h1>
+                </div>
             </div>
-            
-            <div style="border-top: 1px solid var(--border-color); padding-top: 25px;">
-                <button class="btn" id="modal-complete-btn" style="width: 100%; font-size: 1.1rem; padding: 18px;" onmouseenter="uiHover()"></button>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <!-- Radar Chart -->
+                <div class="card">
+                    <h3 style="text-align: center; color: var(--primary); margin-bottom: 10px;">Phổ Kỹ Năng Đa Chiều</h3>
+                    <div class="radar-container">
+                        <svg class="radar-svg" viewBox="0 0 200 200">
+                            <polygon points="100,20 180,60 180,140 100,180 20,140 20,60" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+                            <polygon points="100,60 140,80 140,120 100,140 60,120 60,80" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+                            <line x1="100" y1="100" x2="100" y2="20" stroke="#e2e8f0"/>
+                            <line x1="100" y1="100" x2="180" y2="60" stroke="#e2e8f0"/>
+                            <line x1="100" y1="100" x2="180" y2="140" stroke="#e2e8f0"/>
+                            <line x1="100" y1="100" x2="100" y2="180" stroke="#e2e8f0"/>
+                            <line x1="100" y1="100" x2="20" y2="140" stroke="#e2e8f0"/>
+                            <line x1="100" y1="100" x2="20" y2="60" stroke="#e2e8f0"/>
+                            
+                            <polygon id="skill-poly" points="100,60 130,75 160,130 100,150 40,130 70,75" fill="rgba(37, 99, 235, 0.2)" stroke="var(--primary)" stroke-width="2"/>
+                            
+                            <text x="100" y="12" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">Giao tiếp / Sales</text>
+                            <text x="185" y="60" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Tâm lý học</text>
+                            <text x="185" y="145" fill="#475569" font-size="10" font-weight="bold" text-anchor="start">Vận hành Kho</text>
+                            <text x="100" y="195" fill="#475569" font-size="10" font-weight="bold" text-anchor="middle">Tech / Frontend</text>
+                            <text x="15" y="145" fill="#475569" font-size="10" font-weight="bold" text-anchor="end">Logic / Data</text>
+                            <text x="15" y="60" fill="#475569" font-size="10" font-weight="bold" text-anchor="end">Đàm phán</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">Hoạt động Gần đây</h3>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 15px; font-size: 0.95rem;">
+                        <li style="padding-bottom: 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between;">
+                            <span>[Roadmap] Đã hoàn thành học phần</span>
+                            <strong style="color: var(--success)">+10 Tín</strong>
+                        </li>
+                        <li style="padding-bottom: 15px; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between;">
+                            <span>[Cộng đồng] Thảo luận tại The Hub</span>
+                            <strong style="color: var(--primary)">+50 XP</strong>
+                        </li>
+                        <li style="display: flex; justify-content: space-between;">
+                            <span>[Hệ thống] Định danh hồ sơ</span>
+                            <strong style="color: var(--success)">+5 Tín</strong>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- CHATBOT WIDGET -->
-    <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">
-        <!-- Icon Chat (SVG) -->
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-    </div>
+    <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">💬</div>
     <div class="chatbot-widget" id="chatbot">
         <div class="chat-header" onclick="uiClick(); toggleChat()">
             <span>Trợ lý OurPath AI</span> <span>▼</span>
         </div>
         <div class="chat-body" id="chat-body">
-            <div class="msg bot">Chào bạn! Mình là Trợ lý AI của OurPath. Mình có thể hỗ trợ bạn kiến thức về Sales B2B, vận hành Logistics, hay lập trình Web Frontend. Bạn cần hỏi gì?</div>
+            <div class="msg bot">Chào bạn! Mình là Trợ lý AI. Mình có thể hỗ trợ kiến thức về Sales B2B, vận hành chuỗi cung ứng, hoặc lập trình Web. Bạn cần hỏi gì?</div>
         </div>
         <div class="chat-input">
             <input type="text" id="chat-input-field" placeholder="Nhập câu hỏi của bạn..." onkeypress="handleChatBot(event)">
@@ -476,7 +483,7 @@
     </div>
 
     <script>
-        // --- 1. AUDIO ENGINE (Soft Corporate Sounds) ---
+        // --- 1. AUDIO ENGINE (Soft SaaS Sounds) ---
         let audioCtx; let isSoundOn = true;
         function initAudio() { if(!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } if(audioCtx.state === 'suspended') audioCtx.resume(); }
         function playTone(freq, type, duration, vol = 0.05) {
@@ -488,7 +495,7 @@
             osc.connect(gain); gain.connect(audioCtx.destination);
             osc.start(); osc.stop(audioCtx.currentTime + duration);
         }
-        function uiHover() { playTone(1200, 'sine', 0.03, 0.01); } 
+        function uiHover() { playTone(1200, 'sine', 0.02, 0.01); } 
         function uiClick() { playTone(800, 'sine', 0.05, 0.03); } 
         function uiSuccess() { playTone(800, 'sine', 0.1, 0.05); setTimeout(() => playTone(1200, 'sine', 0.15, 0.05), 100); }
         function uiError() { playTone(400, 'triangle', 0.15, 0.03); }
@@ -498,38 +505,54 @@
             else { btn.innerText = "🔇 Âm thanh: TẮT"; btn.classList.add('muted'); }
         }
 
-        // --- 2. LOGIC & ROADMAP DATA (Đã bỏ Giải tích/Đại số, tập trung xu hướng) ---
+        // --- 2. LOGIC & DATA (Updated with Real-World Trends) ---
         let user = { name: "Khách", xp: 0, credits: 0, level: 1 };
         let activeNodeId = null;
 
         const roadmapData = {
             sale: [
-                { id: "s1", title: "Tổng quan Sales B2B", desc: "Hiểu rõ sự khác biệt giữa quy trình bán hàng B2B và B2C.", syl: "1. Vòng đời bán hàng doanh nghiệp<br>2. Phễu khách hàng", x: 10, y: 50, req: [] },
-                { id: "s2", title: "Tìm kiếm Lead", desc: "Xây dựng tệp khách hàng tiềm năng chất lượng.", syl: "1. Kỹ năng Cold Calling<br>2. Gửi Cold Email tối ưu<br>3. LinkedIn Networking", x: 30, y: 30, req: ["s1"] },
-                { id: "s3", title: "Tâm lý học Hành vi", desc: "Đọc vị nhu cầu của Giám đốc mua hàng/CEO.", syl: "1. Tháp nhu cầu Maslow<br>2. Khơi gợi nỗi đau (Pain points)", x: 30, y: 70, req: ["s1"] },
-                { id: "s4", title: "Kịch bản Telesale", desc: "Soạn thảo kịch bản gọi điện chốt lịch hẹn hiệu quả.", syl: "1. Xây dựng Script<br>2. Hook trong 30s đầu", x: 50, y: 30, req: ["s2"] },
-                { id: "s5", title: "Vượt qua Lễ tân", desc: "Kỹ thuật đi qua 'Gatekeeper' để gặp đúng người ra quyết định.", syl: "1. Tạo sự tự tin<br>2. Đặt câu hỏi thông minh", x: 50, y: 70, req: ["s3"] },
-                { id: "s6", title: "Pitching & Demo", desc: "Trình bày giải pháp thu hút.", syl: "1. Kỹ năng thuyết trình<br>2. Tạo Slide Bán hàng", x: 70, y: 50, req: ["s4", "s5"] },
-                { id: "s7", title: "Đàm phán Giá", desc: "Kỹ thuật bảo vệ biên độ lợi nhuận.", syl: "1. Xử lý câu 'Giá đắt quá'<br>2. Win-Win Situation", x: 90, y: 30, req: ["s6"] },
-                { id: "s8", title: "Chốt Deal (Closing)", desc: "Kỹ thuật chốt hạ hợp đồng.", syl: "1. Chốt Sales bằng ROI<br>2. Ký kết và chăm sóc", x: 90, y: 70, req: ["s6"] }
+                { id: "s1", title: "Tổng quan B2B & Phễu", desc: "Hiểu rõ vòng đời bán hàng và phễu khách hàng.", syl: "- Mindset người làm Sales<br>- Phễu Khách hàng cơ bản", courses: [{n: "Coursera: Sales Management", l: "#"}], x: 10, y: 50, req: [] },
+                { id: "s2", title: "Prospecting & Lead Gen", desc: "Xây dựng tệp khách hàng tiềm năng.", syl: "- Cold Calling<br>- Cold Email<br>- LinkedIn B2B", courses: [{n: "Udemy: Lead Generation", l: "#"}], x: 35, y: 30, req: ["s1"] },
+                { id: "s3", title: "Thấu hiểu Tâm lý", desc: "Đọc vị Pain point (nỗi đau) của Giám đốc mua hàng.", syl: "- Kỹ năng lắng nghe<br>- Tháp nhu cầu", courses: [{n: "EdX: Behavioral Psych", l: "#"}], x: 35, y: 70, req: ["s1"] },
+                { id: "s4", title: "Vượt 'Gatekeeper'", desc: "Kỹ thuật qua mặt Lễ tân để tiếp cận đúng người.", syl: "- Kịch bản Telesale<br>- Đặt câu hỏi mở", courses: [], x: 60, y: 50, req: ["s2", "s3"] },
+                { id: "s5", title: "Pitching & Demo", desc: "Trình bày giải pháp.", syl: "- Storytelling trong Sales<br>- Làm Slide thuyết phục", courses: [], x: 85, y: 30, req: ["s4"] },
+                { id: "s6", title: "Đàm phán & Chốt Deal", desc: "Đàm phán giá cả và xử lý từ chối.", syl: "- Tính ROI cho khách<br>- Kỹ thuật chốt hạ", courses: [], x: 85, y: 70, req: ["s4"] }
             ],
             logistics: [
-                { id: "l1", title: "Cơ bản về SCM", desc: "Tổng quan về Chuỗi cung ứng và Logistics.", syl: "1. Dòng tiền, Thông tin, Hàng hóa", x: 15, y: 50, req: [] },
-                { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm, đánh giá và đàm phán với Nhà cung cấp.", syl: "1. Tiêu chí chọn Supplier<br>2. Hợp đồng mua bán", x: 35, y: 25, req: ["l1"] },
-                { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí lưu kho, cân bằng cung cầu.", syl: "1. Mô hình EOQ<br>2. JIT & Safety Stock", x: 35, y: 75, req: ["l1"] },
-                { id: "l4", title: "Hành chính & Hải quan", desc: "Hiểu thủ tục thông quan hàng hóa.", syl: "1. Khai báo hải quan<br>2. Chứng từ xuất nhập khẩu", x: 60, y: 50, req: ["l2", "l3"] },
-                { id: "l5", title: "Vận tải Đa phương thức", desc: "Quy trình luân chuyển hàng hóa nội địa và quốc tế.", syl: "1. Incoterms 2020<br>2. Tối ưu chi phí Cước", x: 85, y: 30, req: ["l4"] },
-                { id: "l6", title: "Vận hành ERP", desc: "Sử dụng phần mềm quản lý kho vận chuyên nghiệp.", syl: "1. SAP / Oracle cơ bản<br>2. Số hóa chuỗi cung", x: 85, y: 70, req: ["l4"] }
+                { id: "l1", title: "Cơ bản SCM", desc: "Tổng quan Chuỗi cung ứng.", syl: "- Dòng chảy hàng hóa<br>- Bullwhip effect", courses: [{n: "Coursera: SCM Basics", l: "#"}], x: 15, y: 50, req: [] },
+                { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm & đàm phán Nhà cung cấp.", syl: "- Đánh giá Supplier<br>- Hợp đồng thương mại", courses: [], x: 40, y: 25, req: ["l1"] },
+                { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí.", syl: "- Mô hình EOQ<br>- Rủi ro JIT", courses: [{n: "Udemy: Inventory Management", l: "#"}], x: 40, y: 75, req: ["l1"] },
+                { id: "l4", title: "Vận tải Đa phương thức", desc: "Luân chuyển nội địa & Quốc tế.", syl: "- Incoterms 2020<br>- Cước phí", courses: [], x: 70, y: 50, req: ["l2", "l3"] },
+                { id: "l5", title: "Hệ thống ERP", desc: "Số hóa quy trình.", syl: "- SAP/Oracle<br>- Tích hợp data", courses: [], x: 95, y: 50, req: ["l4"] }
             ],
             web: [
-                { id: "w1", title: "HTML/CSS Foundation", desc: "Nền tảng thiết kế giao diện tĩnh.", syl: "1. Flexbox/Grid<br>2. Responsive UI", x: 10, y: 50, req: [] },
-                { id: "w2", title: "JavaScript Logic", desc: "Xử lý tương tác, biến, hàm và DOM.", syl: "1. Console.log / Bug fix<br>2. Event Listeners", x: 30, y: 30, req: ["w1"] },
-                { id: "w3", title: "Thẻ Canvas & Đồ họa", desc: "Vẽ đồ họa động, hoạt hình trên web.", syl: "1. Canvas API 2D<br>2. requestAnimationFrame", x: 55, y: 50, req: ["w2"] },
-                { id: "w4", title: "GSAP Parallax", desc: "Tạo hiệu ứng scroll mượt mà, nhiều layer.", syl: "1. ScrollTrigger<br>2. Xử lý ảnh không bị vỡ", x: 80, y: 30, req: ["w3"] },
-                { id: "w5", title: "Deploy Project", desc: "Đưa website thực tế lên môi trường Internet.", syl: "1. Git/Github<br>2. Vercel Hosting", x: 80, y: 70, req: ["w3"] }
+                { id: "w1", title: "HTML/CSS Core", desc: "Giao diện tĩnh.", syl: "- Flexbox/Grid<br>- Responsive UI", courses: [{n: "W3Schools: HTML/CSS", l: "#"}], x: 10, y: 50, req: [] },
+                { id: "w2", title: "JS & DOM Logic", desc: "Xử lý tương tác.", syl: "- Event Listeners<br>- Console & Debug", courses: [{n: "FreeCodeCamp: JS", l: "#"}], x: 30, y: 30, req: ["w1"] },
+                { id: "w3", title: "Canvas Animation", desc: "Đồ họa động.", syl: "- Canvas 2D API<br>- requestAnimationFrame", courses: [], x: 55, y: 50, req: ["w2"] },
+                { id: "w4", title: "GSAP Parallax", desc: "Hiệu ứng scroll mượt.", syl: "- ScrollTrigger<br>- Layering CSS", courses: [], x: 80, y: 30, req: ["w3"] },
+                { id: "w5", title: "Deploy Project", desc: "Hosting dự án.", syl: "- Github<br>- Vercel/Netlify", courses: [], x: 80, y: 70, req: ["w3"] }
             ]
         };
         let currentDiscipline = 'sale';
+
+        // 3D City Setup depending on discipline
+        const cityStyles = {
+            sale: { bg: '#fef3c7', ground: '#fde68a', road: '#d97706', b1: {r:'#f97316', w:'#fff7ed'}, b2: {r:'#ea580c', w:'#ffedd5'} },
+            logistics: { bg: '#d1fae5', ground: '#a7f3d0', road: '#059669', b1: {r:'#10b981', w:'#ecfdf5'}, b2: {r:'#059669', w:'#d1fae5'} },
+            web: { bg: '#e0f2fe', ground: '#bae6fd', road: '#0284c7', b1: {r:'#3b82f6', w:'#eff6ff'}, b2: {r:'#2563eb', w:'#dbeafe'} }
+        };
+
+        const dummyPlayersData = {
+            sale: [ { name: "Học viên B", r: 1, c: 3, color: "#f43f5e", offset: 0 }, { name: "Học viên C", r: 3, c: 1, color: "#f97316", offset: Math.PI/2 }, { name: "Học viên D", r: 2, c: 4, color: "#eab308", offset: Math.PI } ],
+            logistics: [ { name: "Học viên B", r: 1, c: 3, color: "#10b981", offset: 0 }, { name: "Học viên C", r: 3, c: 1, color: "#059669", offset: Math.PI/2 }, { name: "Học viên D", r: 2, c: 4, color: "#34d399", offset: Math.PI } ],
+            web: [ { name: "Học viên B", r: 1, c: 3, color: "#3b82f6", offset: 0 }, { name: "Học viên C", r: 3, c: 1, color: "#8b5cf6", offset: Math.PI/2 }, { name: "Học viên D", r: 2, c: 4, color: "#06b6d4", offset: Math.PI } ]
+        };
+
+        const cityMaps = {
+            sale: [ [2,1,2,0,1], [0,1,2,2,1], [1,1,1,1,1], [2,1,0,2,1], [0,1,0,0,0] ],
+            logistics: [ [0,1,4,4,1], [0,1,4,4,1], [1,1,1,1,1], [4,1,0,0,1], [4,1,0,0,0] ], // 4 = flat warehouse
+            web: [ [0,1,3,0,1], [3,1,0,3,1], [1,1,1,1,1], [0,1,3,0,1], [0,1,0,0,0] ] // 3 = tall tower
+        };
 
         function navTo(viewId, menuEl) {
             uiClick(); document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
@@ -545,7 +568,7 @@
         function handleLogin() {
             initAudio(); uiClick(); uiSuccess();
             const nameInput = document.getElementById('login-name').value;
-            user.name = nameInput ? nameInput : "Học viên OurPath";
+            user.name = nameInput ? nameInput : "Nguyễn Văn A";
             
             document.getElementById('hdr-name').innerText = user.name;
             document.getElementById('tour-my-name').innerText = user.name;
@@ -566,9 +589,8 @@
             currentDiscipline = chosenMajor;
 
             updateStats(0,0);
-            navTo('roadmap-view', document.getElementById('menu-road')); // Vào thẳng roadmap
-            
-            setTimeout(() => addWorldMsg("Hệ thống OurPath", `Chào mừng ${user.name} đã tham gia nền tảng đào tạo thực chiến.`), 2000);
+            navTo('roadmap-view', document.getElementById('menu-road'));
+            setTimeout(() => addWorldMsg("Hệ thống OurPath", `Chào mừng ${user.name} đã tham gia nền tảng.`), 2000);
         }
 
         function handleLogout() {
@@ -576,6 +598,7 @@
             user = { name: "Khách", xp: 0, credits: 0, level: 1 };
             document.getElementById('hdr-name').innerText = "Khách";
             document.getElementById('hdr-name').style.color = "var(--text-muted)";
+            document.getElementById('login-name').value = "Nguyễn Văn A";
             
             document.querySelectorAll('.menu-item').forEach(m => {
                 if(m.id !== 'menu-auth') m.style.display = "none";
@@ -590,17 +613,13 @@
             user.xp += addXp; user.credits += addCredit;
             user.level = Math.floor(user.xp / 100) + 1;
             
-            // Header stats
             document.getElementById('hdr-xp').innerText = user.xp;
             document.getElementById('hdr-credit').innerText = user.credits;
-            
-            // KPI Dashboard stats
             document.getElementById('dash-xp').innerText = user.xp;
             document.getElementById('dash-credit').innerText = user.credits;
             document.getElementById('dash-level').innerText = user.level;
             document.getElementById('tour-my-credit').innerText = user.credits;
             
-            // Radar Chart Randomization
             const poly = document.getElementById('skill-poly');
             if(poly) {
                 const r = () => Math.floor(Math.random() * 40) + 60;
@@ -645,7 +664,6 @@
             
             const nodes = roadmapData[currentDiscipline];
 
-            // Render Path Lines
             nodes.forEach(node => {
                 const status = checkNodeStatus(node);
                 node.req.forEach(reqId => {
@@ -667,7 +685,6 @@
                 });
             });
 
-            // Render Nodes
             nodes.forEach(node => {
                 const { isCompleted, isLocked } = checkNodeStatus(node);
                 const nDiv = document.createElement('div');
@@ -679,35 +696,53 @@
                 
                 nDiv.innerHTML = `<div class="m-title">${node.title}</div><div style="font-size: 0.75rem; text-align: center; margin-top:8px; font-weight: 700; ${colorClass}">${stateText}</div>`;
                 
-                if(!isLocked) { nDiv.onmouseenter = uiHover; nDiv.onclick = () => { uiClick(); openModal(node, isCompleted); }; } 
+                if(!isLocked) { nDiv.onmouseenter = uiHover; nDiv.onclick = () => { uiClick(); openNodeModal(node, isCompleted); }; } 
                 else { nDiv.onclick = uiError; }
                 container.appendChild(nDiv);
             });
         }
 
-        // --- MODAL DETAILED EXPANSION ---
-        function openModal(node, isCompleted) {
+        // --- MODAL 1: ROADMAP DETAILS ---
+        function openNodeModal(node, isCompleted) {
             activeNodeId = node.id;
             document.getElementById('modal-title').innerText = node.title;
-            document.getElementById('modal-desc').innerHTML = `<strong>Mô tả:</strong> ${node.desc}<br><br>Hãy xem kỹ Đề cương và Tải bài giảng trước khi làm bài Test xác nhận hoàn thành học phần.`; 
+            document.getElementById('modal-desc').innerHTML = `<strong>Tóm tắt nội dung:</strong> ${node.desc}`; 
             document.getElementById('modal-syllabus').innerHTML = node.syl;
             
             const detailsElement = document.getElementById('modal-syllabus').parentElement;
             detailsElement.removeAttribute('open');
+            
+            // External courses
+            const courseContainer = document.getElementById('modal-courses');
+            courseContainer.innerHTML = '';
+            if(node.courses && node.courses.length > 0) {
+                node.courses.forEach(c => {
+                    courseContainer.innerHTML += `<a href="${c.l}" class="course-link" target="_blank">🔗 ${c.n}</a>`;
+                });
+            } else {
+                courseContainer.innerHTML = `<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Chưa có khóa học ngoại vi đề xuất cho học phần này.</p>`;
+            }
 
             const btn = document.getElementById('modal-complete-btn');
             if(isCompleted) {
                 btn.innerText = "HỌC PHẦN ĐÃ HOÀN THÀNH"; btn.style.background = "#f1f5f9"; btn.style.color = "var(--text-muted)"; btn.style.boxShadow = "none"; btn.disabled = true;
             } else {
-                btn.innerText = "LÀM BÀI TEST & XÁC NHẬN (+10 TÍN CHỈ)"; btn.style.background = "var(--success)"; btn.style.color = "white"; btn.disabled = false;
+                btn.innerText = "XÁC NHẬN HOÀN THÀNH VIDEO (+10 TÍN)"; btn.style.background = "var(--success)"; btn.style.color = "white"; btn.disabled = false;
                 btn.onclick = () => {
                     uiSuccess(); localStorage.setItem(`${currentDiscipline}_${activeNodeId}`, 'true');
-                    updateStats(100, 10); renderRoadmap(); closeModal();
+                    updateStats(100, 10); renderRoadmap(); closeNodeModal();
                 };
             }
             document.getElementById('nodeModal').classList.add('show');
         }
-        function closeModal() { document.getElementById('nodeModal').classList.remove('show'); }
+        function closeNodeModal() { document.getElementById('nodeModal').classList.remove('show'); }
+
+        // --- MODAL 2: KPI DASHBOARD ---
+        function openKPIModal() { 
+            if(user.name === "Khách") return; // Not logged in
+            uiClick(); document.getElementById('kpiModal').classList.add('show'); 
+        }
+        function closeKPIModal() { document.getElementById('kpiModal').classList.remove('show'); }
 
         // --- MMO CHAT ---
         function addWorldMsg(sender, text, isMe = false) {
@@ -750,11 +785,11 @@
                     let reply = "Mình đang phân tích. Bạn có thể nói rõ hơn bạn cần hỗ trợ phần nào trong lộ trình không?";
                     let lowerText = text.toLowerCase();
                     if(lowerText.includes("thị trường") || lowerText.includes("sales") || lowerText.includes("bán hàng")) {
-                        reply = "Để bán hàng B2B tốt, hãy tập trung vào ROI (Tỷ suất sinh lời) của doanh nghiệp thay vì chỉ nói về tính năng. Bạn muốn xem kịch bản Cold Call không?";
+                        reply = "Để bán hàng B2B tốt, hãy tập trung vào ROI (Tỷ suất sinh lời) của doanh nghiệp thay vì chỉ nói về tính năng.";
                     } else if (lowerText.includes("tồn kho") || lowerText.includes("logistics") || lowerText.includes("chuỗi")) {
-                        reply = "Quản lý Logistics rất quan trọng! Mô hình JIT giúp giảm chi phí kho bãi, nhưng bạn cần tính toán Safety Stock cẩn thận nhé.";
+                        reply = "Mô hình JIT giúp giảm chi phí kho bãi, nhưng bạn cần tính toán Safety Stock cẩn thận nhé.";
                     } else if (lowerText.includes("canvas") || lowerText.includes("gsap") || lowerText.includes("web")) {
-                        reply = "Với Web Frontend, hiệu ứng Parallax bằng GSAP kết hợp Canvas sẽ giúp web tránh bị giật lag và không bị vỡ ảnh. Bạn cần tải Source code mẫu không?";
+                        reply = "Với Web Frontend, hiệu ứng Parallax bằng GSAP kết hợp Canvas sẽ giúp web tránh bị giật lag và không bị vỡ ảnh.";
                     }
                     
                     cb.innerHTML += `<div class="msg bot">${reply}</div>`;
@@ -763,17 +798,9 @@
             }
         }
 
-        // --- CARTOON CITY 3D (Bright SimCity Style with Multiple Avatars) ---
+        // --- CARTOON CITY 3D (Discipline specific) ---
         const canvas = document.getElementById('cityCanvas'); const ctx = canvas.getContext('2d');
         let cw, ch; let cityFrameId; let frameCount = 0; let lastTime = performance.now();
-
-        // Danh sách các học viên (Dummy players)
-        const dummyPlayers = [
-            { name: "Phan Giang", r: 1, c: 3, color: "#f43f5e", offset: 0 },
-            { name: "H. Thái", r: 3, c: 1, color: "#10b981", offset: Math.PI/2 },
-            { name: "Tuấn B2B", r: 2, c: 4, color: "#f97316", offset: Math.PI },
-            { name: "Minh Tech", r: 0, c: 1, color: "#8b5cf6", offset: Math.PI*1.5 }
-        ];
 
         function initCanvas() {
             const wrapper = canvas.parentElement; cw = wrapper.clientWidth; ch = wrapper.clientHeight;
@@ -791,18 +818,13 @@
             ctx.moveTo(x, y - h); ctx.lineTo(x + w, y); ctx.lineTo(x, y + h); ctx.lineTo(x - w, y); ctx.closePath(); ctx.fill();
         }
 
-        // Vẽ Nhân vật hoạt hình 3D (Avatar)
         function drawCartoonHuman(x, y, colorBody, name) {
             ctx.fillStyle = "rgba(0,0,0,0.15)";
             ctx.beginPath(); ctx.ellipse(x, y, 10, 5, 0, 0, Math.PI*2); ctx.fill();
-            
             // Body
-            ctx.fillStyle = colorBody;
-            ctx.beginPath(); ctx.roundRect(x - 7, y - 18, 14, 18, 5); ctx.fill();
+            ctx.fillStyle = colorBody; ctx.beginPath(); ctx.roundRect(x - 7, y - 18, 14, 18, 5); ctx.fill();
             // Head
-            ctx.fillStyle = "#ffedd5"; // Skin color
-            ctx.beginPath(); ctx.arc(x, y - 24, 7, 0, Math.PI*2); ctx.fill();
-            
+            ctx.fillStyle = "#ffedd5"; ctx.beginPath(); ctx.arc(x, y - 24, 7, 0, Math.PI*2); ctx.fill();
             // Name Tag
             ctx.fillStyle = "#1e293b"; ctx.font = "bold 11px Inter, sans-serif"; ctx.textAlign = "center";
             ctx.fillText(name, x, y - 38);
@@ -810,36 +832,26 @@
         
         function animateCity(currentTime) {
             const deltaTime = currentTime - lastTime; lastTime = currentTime;
-            if(frameCount % 10 === 0) {
-                let fps = Math.round(1000 / deltaTime); if(fps > 120) fps = 120;
-                const counter = document.getElementById('fps-counter');
-                if(counter) counter.innerText = fps || 120;
-            }
-
             frameCount++; ctx.clearRect(0, 0, cw, ch);
             const originX = cw / 2; const originY = 200; const tW = 60; const tH = 30; 
 
-            // Bản đồ hoạt hình tươi sáng
-            // 0: Cỏ, 1: Đường nhựa, 2: Nhà cam, 3: Nhà xanh dương
-            const map = [ 
-                [0,1,3,0,1], 
-                [2,1,0,3,1], 
-                [1,1,1,1,1], 
-                [0,1,2,0,1],
-                [0,1,0,0,0]
-            ];
+            const style = cityStyles[currentDiscipline] || cityStyles.web;
+            document.getElementById('canvas-bg').style.background = style.bg;
+
+            const map = cityMaps[currentDiscipline] || cityMaps.web;
+            const players = dummyPlayersData[currentDiscipline] || dummyPlayersData.web;
 
             // Render Ground
             for(let r = 0; r < map.length; r++) {
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
                     if(map[r][c] === 1) { 
-                        drawIsoGround(x, y, tW, tH, '#cbd5e1'); // Đường sáng
+                        drawIsoGround(x, y, tW, tH, style.road);
                         ctx.strokeStyle = "white"; ctx.lineWidth = 2; ctx.setLineDash([5, 10]);
                         ctx.beginPath(); ctx.moveTo(x - tW/2, y - tH/2); ctx.lineTo(x + tW/2, y + tH/2); ctx.stroke();
                         ctx.setLineDash([]);
                     } 
-                    else { drawIsoGround(x, y, tW, tH, '#86efac'); /* Cỏ xanh */ }
+                    else { drawIsoGround(x, y, tW, tH, style.ground); }
                 }
             }
 
@@ -848,28 +860,31 @@
                 for(let c = 0; c < map[r].length; c++) {
                     const x = originX + (c - r) * tW; const y = originY + (c + r) * tH;
                     if(map[r][c] === 2) { 
-                        drawCartoonBuilding(x, y, tW-5, tH-2, 40, '#f97316', '#fff7ed', '#ffedd5'); // Nhà cam
+                        drawCartoonBuilding(x, y, tW-5, tH-2, 40, style.b1.r, style.b1.w, style.b2.w); 
                     }
                     else if(map[r][c] === 3) { 
-                        drawCartoonBuilding(x, y, tW-5, tH-2, 60, '#3b82f6', '#eff6ff', '#dbeafe'); // Nhà xanh
+                        drawCartoonBuilding(x, y, tW-5, tH-2, 70, style.b2.r, style.b2.w, style.b1.w); 
+                    }
+                    else if(map[r][c] === 4) { // Kho bãi thấp
+                        drawCartoonBuilding(x, y, tW-2, tH-1, 20, style.b1.r, style.b1.w, style.b2.w); 
                     }
                 }
             }
             
             // Render Dummy Players
-            dummyPlayers.forEach(p => {
+            players.forEach(p => {
                 const px = originX + (p.c - p.r) * tW; 
                 const basePy = originY + (p.c + p.r) * tH;
-                const py = basePy + Math.sin(frameCount * 0.08 + p.offset) * 4; // Nhấp nhô khác nhịp
+                const py = basePy + Math.sin(frameCount * 0.08 + p.offset) * 4;
                 drawCartoonHuman(px, py, p.color, p.name);
             });
 
             // Render Main Player
             const uX = originX + (2 - 2) * tW; const baseUy = originY + (2 + 2) * tH;
-            const uY = baseUy + Math.sin(frameCount * 0.1) * 6; // Nảy lên xuống
+            const uY = baseUy + Math.sin(frameCount * 0.1) * 6; 
             
-            let myColor = "#3b82f6";
-            if(user.credits >= 10) myColor = "#10b981"; // Đổi màu khi có điểm
+            let myColor = "var(--primary)";
+            if(user.credits >= 10) myColor = "var(--success)";
             
             drawCartoonHuman(uX, uY, myColor, user.name + " (Bạn)");
 

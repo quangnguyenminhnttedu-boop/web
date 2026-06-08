@@ -39,26 +39,22 @@
             display: flex; flex-direction: column; padding: 20px 0; z-index: 50; box-shadow: var(--shadow-md);
         }
         
-        /* LOGO HOLOGRAM UPGRADE */
-        .brand, .brand-text-glow { 
+        /* LOGO CHUẨN XANH NGUYÊN KHỐI */
+        .brand { 
             font-size: 2.2rem; 
             font-weight: 900; 
             letter-spacing: -0.5px; 
             display: inline-flex; 
             align-items: center; 
             justify-content: center;
-            background: linear-gradient(90deg, #00f0ff, #ff007f, #7000ff, #00f0ff);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: hologram 4s linear infinite;
-            text-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            color: var(--primary);
+            padding: 0 24px 20px; 
+            border-bottom: 1px solid var(--border-color); 
         }
-        .brand { padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); }
-
-        @keyframes hologram {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+        
+        /* Class màu chữ logo ở phần body */
+        .brand-text {
+            color: var(--primary);
         }
 
         .menu-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 5px; padding: 0 12px; flex: 1;}
@@ -203,9 +199,7 @@
 </head>
 <body>
 
-    <!-- SIDEBAR -->
     <nav class="sidebar">
-        <!-- FIXED LOGO TO HOLOGRAM -->
         <div class="brand">
             OurPath
         </div>
@@ -214,7 +208,6 @@
             <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Khởi tạo Hồ sơ</li>
             <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Đào tạo</li>
             <li class="menu-item" style="display: none;" id="menu-world" onmouseenter="uiHover()" onclick="navTo('world-view', this)">🏙️ OurPath City</li>
-            <!-- CHANGED TO THE HUB FIXED -->
             <li class="menu-item" style="display: none;" id="menu-forum" onmouseenter="uiHover()" onclick="navTo('forum-view', this)">💬 The Hub</li>
             <li class="menu-item" style="display: none;" id="menu-tour" onmouseenter="uiHover()" onclick="navTo('tour-view', this)">🏆 Giải đấu Vinh danh</li>
             
@@ -223,7 +216,6 @@
     </nav>
 
     <div class="main-content">
-        <!-- HEADER -->
         <header>
             <div class="header-controls">
                 <div class="discipline-switcher" id="hdr-discipline" style="display: none;">
@@ -238,7 +230,6 @@
             <div class="header-controls">
                 <button class="sound-toggle" id="btn-sound" onclick="toggleSound()">🔊 Âm thanh: BẬT</button>
                 
-                <!-- KPI Trigger Zone -->
                 <div class="user-profile-zone" onmouseenter="uiHover()" onclick="openKPIModal()">
                     <div class="stat-badge">⭐ <span id="hdr-xp">0</span> XP</div>
                     <div class="stat-badge" style="color: var(--success); border-color: #a7f3d0; background: #ecfdf5;">🎓 <span id="hdr-credit">0</span> TÍN</div>
@@ -247,11 +238,9 @@
             </div>
         </header>
 
-        <!-- 1. AUTH & LANDING VIEW -->
         <div id="auth-view" class="view-section active">
             <div style="text-align: center; max-width: 850px; margin: 0 auto 40px;">
-                <!-- DÒNG CHỮ CHÍNH ĐỒNG BỘ MÀU HOLOGRAM VỚI SIDEBAR -->
-                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span class="brand-text-glow">OurPath</span></h1>
+                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span class="brand-text">OurPath</span></h1>
                 <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng EdTech ứng dụng AI giúp người học kiến tạo, trực quan hóa và quản lý lộ trình học thuật cá nhân hóa theo mục tiêu học tập và nghề nghiệp.</p>
             </div>
 
@@ -276,7 +265,6 @@
             </div>
         </div>
 
-        <!-- 2. MODERN ROADMAP VIEW -->
         <div id="roadmap-view" class="view-section">
             <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px;">
                 <div>
@@ -293,7 +281,6 @@
             </div>
         </div>
 
-        <!-- 3. CARTOON CITY MMO VIEW -->
         <div id="world-view" class="view-section">
             <h2 style="font-size: 2rem; margin-bottom: 20px;">OurPath Campus</h2>
             <div class="world-layout">
@@ -316,10 +303,9 @@
             </div>
         </div>
 
-        <!-- 4. FORUM VIEW -->
         <div id="forum-view" class="view-section">
             <div style="display: flex; justify-content: space-between; margin-bottom: 25px;">
-                <h2 style="font-size: 2rem;">The Hub - Trung tâm Giao lưu</h2>
+                <h2 style="font-size: 2rem;">The Hub</h2>
                 <button class="btn" onmouseenter="uiHover()" onclick="uiClick()">+ Tạo bài viết mới</button>
             </div>
             
@@ -353,7 +339,6 @@
             </details>
         </div>
 
-        <!-- 5. TOURNAMENT VIEW -->
         <div id="tour-view" class="view-section">
             <h2 style="font-size: 2rem; margin-bottom: 10px;">Bảng vàng Vinh danh</h2>
             <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 25px;">Cạnh tranh lành mạnh dựa trên số Tín chỉ tích lũy được.</p>
@@ -381,7 +366,6 @@
         </div>
     </div>
 
-    <!-- MODAL 1: ROADMAP DETAILS -->
     <div class="modal-overlay" id="nodeModal">
         <div class="node-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeNodeModal()">✕</div>
@@ -398,7 +382,6 @@
                         <div class="details-content" id="modal-syllabus">Nội dung...</div>
                     </details>
                     
-                    <!-- THAY TỪ NGOẠI VI THÀNH BÊN THỨ BA -->
                     <h4 style="margin-top: 20px; color: var(--text-main);">Tài liệu & Khóa học từ Bên thứ ba (Đề xuất)</h4>
                     <div id="modal-courses"></div>
                 </div>
@@ -410,7 +393,6 @@
                     </video>
                     
                     <div style="flex: 1; border: 1px dashed var(--border-color); border-radius: 8px; padding: 15px; text-align: center; background: #fafafa;">
-                        <!-- ĐỔI THÀNH "Xem kĩ" THEO FEEDBACK -->
                         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px;">Xem kĩ video và tài liệu trước khi xác nhận hoàn thành học phần.</p>
                         <button class="btn" id="modal-complete-btn" style="width: 100%; font-size: 1rem;" onmouseenter="uiHover()"></button>
                     </div>
@@ -419,7 +401,6 @@
         </div>
     </div>
 
-    <!-- MODAL 2: KPI / RADAR DASHBOARD -->
     <div class="modal-overlay" id="kpiModal">
         <div class="kpi-modal">
             <div class="close-modal" onmouseenter="uiHover()" onclick="uiClick(); closeKPIModal()">✕</div>
@@ -445,7 +426,6 @@
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <!-- Radar Chart -->
                 <div class="card">
                     <h3 style="text-align: center; color: var(--primary); margin-bottom: 10px;">Phổ Kỹ Năng Đa Chiều</h3>
                     <div class="radar-container">
@@ -492,7 +472,6 @@
         </div>
     </div>
 
-    <!-- CHATBOT WIDGET -->
     <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
     </div>
@@ -531,7 +510,7 @@
             else { btn.innerText = "🔇 Âm thanh: TẮT"; btn.classList.add('muted'); }
         }
 
-        // --- 2. LOGIC & DATA (ĐÃ SỬA CÁC LINK COURSERA HOẠT ĐỘNG THẬT) ---
+        // --- 2. LOGIC & DATA VỚI COURSERA LINKS ---
         let user = { name: "Khách", xp: 0, credits: 0, level: 1 };
         let activeNodeId = null;
 
@@ -545,7 +524,7 @@
                 { id: "s6", title: "Đàm phán & Chốt Deal", desc: "Đàm phán giá cả và xử lý từ chối.", syl: "- Tính ROI cho khách<br>- Kỹ thuật chốt hạ", courses: [], x: 85, y: 70, req: ["s4"] }
             ],
             logistics: [
-                { id: "l1", title: "Cơ bản SCM", desc: "Tổng quan Chuỗi cung ứng.", syl: "- Dòng chảy hàng hóa<br>- Bullwhip effect", courses: [{n: "Coursera: Supply Chain Logistics (LINK CHUẨN)", l: "https://www.coursera.org/learn/supply-chain-logistics"}], x: 15, y: 50, req: [] },
+                { id: "l1", title: "Cơ bản SCM", desc: "Tổng quan Chuỗi cung ứng.", syl: "- Dòng chảy hàng hóa<br>- Bullwhip effect", courses: [{n: "Coursera: Supply Chain Logistics", l: "https://www.coursera.org/learn/supply-chain-logistics"}], x: 15, y: 50, req: [] },
                 { id: "l2", title: "Quản trị Thu mua", desc: "Tìm kiếm & đàm phán Nhà cung cấp.", syl: "- Đánh giá Supplier<br>- Hợp đồng thương mại", courses: [{n: "Coursera: Supply Chain Operations", l: "https://www.coursera.org/learn/supply-chain-operations"}], x: 40, y: 25, req: ["l1"] },
                 { id: "l3", title: "Quản trị Tồn kho", desc: "Tối ưu hóa chi phí.", syl: "- Mô hình EOQ<br>- Rủi ro JIT", courses: [{n: "Coursera: Supply Chain Planning", l: "https://www.coursera.org/learn/supply-chain-planning"}], x: 40, y: 75, req: ["l1"] },
                 { id: "l4", title: "Vận tải Đa phương thức", desc: "Luân chuyển nội địa & Quốc tế.", syl: "- Incoterms 2020<br>- Cước phí", courses: [], x: 70, y: 50, req: ["l2", "l3"] },
@@ -596,7 +575,6 @@
             const nameInput = document.getElementById('login-name').value;
             user.name = nameInput ? nameInput : "Nguyễn Văn A";
             
-            // Tải lại các biến XP/Tín chỉ cũ để đồng bộ nút bấm
             user.xp = parseInt(localStorage.getItem('user_xp')) || 0;
             user.credits = parseInt(localStorage.getItem('user_credit')) || 0;
             user.level = Math.floor(user.xp / 100) + 1;
@@ -605,7 +583,6 @@
             document.getElementById('tour-my-name').innerText = user.name;
             document.getElementById('hdr-name').style.color = "var(--primary)";
             
-            // Toggle Menus
             document.getElementById('menu-road').style.display = "flex";
             document.getElementById('menu-world').style.display = "flex";
             document.getElementById('menu-forum').style.display = "flex";
@@ -625,7 +602,6 @@
 
         function handleLogout() {
             uiClick();
-            // Xóa bộ nhớ khi logout giúp người dùng test tính năng cộng điểm từ đầu một cách dễ dàng
             localStorage.clear();
             user = { name: "Khách", xp: 0, credits: 0, level: 1 };
             document.getElementById('hdr-name').innerText = "Khách";
@@ -645,7 +621,6 @@
             user.xp += addXp; user.credits += addCredit;
             user.level = Math.floor(user.xp / 100) + 1;
             
-            // Đẩy điểm vào bộ nhớ trình duyệt để đồng bộ vĩnh viễn
             localStorage.setItem('user_xp', user.xp);
             localStorage.setItem('user_credit', user.credits);
             
@@ -755,7 +730,7 @@
                     courseContainer.innerHTML += `<a href="${c.l}" class="course-link" target="_blank">🔗 ${c.n}</a>`;
                 });
             } else {
-                courseContainer.innerHTML = `<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Chưa có khóa học ngoại vi đề xuất cho học phần này.</p>`;
+                courseContainer.innerHTML = `<p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px;">Chưa có khóa học từ Bên thứ ba đề xuất cho học phần này.</p>`;
             }
 
             const btn = document.getElementById('modal-complete-btn');
@@ -773,7 +748,10 @@
         function closeNodeModal() { document.getElementById('nodeModal').classList.remove('show'); }
 
         // --- MODAL KPI DASHBOARD ---
-        function openKPIModal() { if(user.name === "Khách") return; uiClick(); document.getElementById('kpiModal').classList.add('show'); }
+        function openKPIModal() { 
+            if(user.name === "Khách") return; 
+            uiClick(); document.getElementById('kpiModal').classList.add('show'); 
+        }
         function closeKPIModal() { document.getElementById('kpiModal').classList.remove('show'); }
 
         // --- MMO CHAT ---
@@ -823,6 +801,7 @@
                     } else if (lowerText.includes("canvas") || lowerText.includes("gsap") || lowerText.includes("web")) {
                         reply = "Với Web Frontend, hiệu ứng Parallax bằng GSAP kết hợp Canvas sẽ giúp web tránh bị giật lag và không bị vỡ ảnh.";
                     }
+                    
                     cb.innerHTML += `<div class="msg bot">${reply}</div>`;
                     cb.scrollTop = cb.scrollHeight;
                 }, 800);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OurPath - Nền tảng Đào tạo Thực chiến</title>
+    <title>OurPath - Nền tảng EdTech AI</title>
     <style>
         :root {
             /* Sales / SaaS UI Colors */
@@ -38,8 +38,18 @@
             width: var(--sidebar-w); background: var(--bg-surface); border-right: 1px solid var(--border-color);
             display: flex; flex-direction: column; padding: 20px 0; z-index: 50; box-shadow: var(--shadow-md);
         }
-        .brand { font-size: 1.8rem; font-weight: 900; padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); color: var(--primary); letter-spacing: -0.5px;}
-        .brand span { color: var(--secondary); }
+        
+        /* LOGO UPGRADE */
+        .brand { 
+            font-size: 1.8rem; font-weight: 900; padding: 0 24px 20px; border-bottom: 1px solid var(--border-color); 
+            color: var(--text-main); letter-spacing: -0.5px; display: flex; align-items: center; gap: 8px;
+        }
+        .brand span { 
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+
         .menu-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 5px; padding: 0 12px; flex: 1;}
         .menu-item { padding: 14px 18px; border-radius: 12px; cursor: pointer; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease; }
         .menu-item:hover { background: #f1f5f9; color: var(--primary); transform: translateX(5px); }
@@ -119,7 +129,7 @@
         .w-msg { font-size: 0.95rem; line-height: 1.5; animation: slideIn 0.3s ease; background: white; padding: 12px; border-radius: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); border-left: 4px solid var(--primary);}
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .chat-input-area { padding: 15px; border-top: 1px solid var(--border-color); display: flex; gap: 10px; background: white;}
-        .chat-input-area input { flex: 1; background: #f1f5f9; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; color: var(--text-main); outline: none;}
+        .chat-input-area input { flex: 1; background: #f1f5f9; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; color: var(--text-main); outline: none; transition: 0.2s;}
         .chat-input-area input:focus { border-color: var(--primary); background: white;}
 
         /* --- TOURNAMENT --- */
@@ -184,7 +194,16 @@
 
     <!-- SIDEBAR -->
     <nav class="sidebar">
-        <div class="brand">Our<span>Path</span></div>
+        <!-- LOGO UPGRADE -->
+        <div class="brand">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: var(--primary);">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+            </svg>
+            Our<span>Path</span>
+        </div>
+
         <ul class="menu-list">
             <li class="menu-item active-menu" id="menu-auth" onmouseenter="uiHover()" onclick="navTo('auth-view', this)">🚀 Khởi tạo Hồ sơ</li>
             <li class="menu-item" style="display: none;" id="menu-road" onmouseenter="uiHover()" onclick="navTo('roadmap-view', this)">🗺️ Lộ trình Đào tạo</li>
@@ -223,9 +242,9 @@
 
         <!-- 1. AUTH & LANDING VIEW -->
         <div id="auth-view" class="view-section active">
-            <div style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
-                <h1 style="font-size: 3rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
-                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng đào tạo thực chiến tập trung vào các nhóm ngành khát nhân sự: Sales B2B, Logistics, và Công nghệ. Học qua dự án, tương tác với Mentor.</p>
+            <div style="text-align: center; max-width: 850px; margin: 0 auto 40px;">
+                <h1 style="font-size: 3.2rem; color: var(--text-main); margin-bottom: 15px; font-weight: 900;">Phát triển Sự nghiệp cùng <span style="color: var(--primary)">OurPath</span></h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6;">Nền tảng EdTech ứng dụng AI giúp sinh viên kiến tạo, trực quan hóa và quản lý lộ trình học thuật cá nhân hóa theo mục tiêu học tập và nghề nghiệp.</p>
             </div>
 
             <div class="card" style="max-width: 500px; margin: 0 auto; border-top: 4px solid var(--secondary);">
@@ -245,7 +264,7 @@
                     </select>
                 </div>
 
-                <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Bắt đầu Học ngay (Miễn phí)</button>
+                <button class="btn btn-cta" style="width: 100%; font-size: 1.1rem; padding: 16px;" onmouseenter="uiHover()" onclick="handleLogin()">Bắt đầu Học ngay</button>
             </div>
         </div>
 
@@ -469,13 +488,15 @@
     </div>
 
     <!-- CHATBOT WIDGET -->
-    <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">💬</div>
+    <div class="chat-toggle-btn" onmouseenter="uiHover()" onclick="uiClick(); toggleChat()">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
     <div class="chatbot-widget" id="chatbot">
         <div class="chat-header" onclick="uiClick(); toggleChat()">
             <span>Trợ lý OurPath AI</span> <span>▼</span>
         </div>
         <div class="chat-body" id="chat-body">
-            <div class="msg bot">Chào bạn! Mình là Trợ lý AI. Mình có thể hỗ trợ kiến thức về Sales B2B, vận hành chuỗi cung ứng, hoặc lập trình Web. Bạn cần hỏi gì?</div>
+            <div class="msg bot">Chào bạn! Mình là Trợ lý AI của OurPath. Mình có thể hỗ trợ kiến thức về Sales B2B, vận hành chuỗi cung ứng, hoặc lập trình Web. Bạn cần hỏi gì?</div>
         </div>
         <div class="chat-input">
             <input type="text" id="chat-input-field" placeholder="Nhập câu hỏi của bạn..." onkeypress="handleChatBot(event)">
@@ -739,7 +760,7 @@
 
         // --- MODAL 2: KPI DASHBOARD ---
         function openKPIModal() { 
-            if(user.name === "Khách") return; // Not logged in
+            if(user.name === "Khách") return; 
             uiClick(); document.getElementById('kpiModal').classList.add('show'); 
         }
         function closeKPIModal() { document.getElementById('kpiModal').classList.remove('show'); }
